@@ -5,6 +5,7 @@ import requests
 import subprocess
 import threading
 import time
+import ctypes
 from urllib.parse import urlparse
 
 from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
@@ -15,6 +16,159 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
 from PySide6.QtCore import Qt, QThread, Signal, QPropertyAnimation, QEasingCurve, QTimer, QRect, QPoint, QSize
 from PySide6.QtGui import QFont, QPixmap, QPainter, QColor, QLinearGradient, QPen, QBrush, QMouseEvent, QCursor, QIcon
 import webbrowser
+
+def is_admin():
+    """Check if the current process has admin privileges"""
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
+
+def run_as_admin():
+    """Restart the application with admin privileges using multiple methods"""
+    if is_admin():
+        return True
+    
+    try:
+        # Get the current script path
+        if getattr(sys, 'frozen', False):
+            # If running as compiled executable
+            script_path = sys.executable
+            args = []
+        else:
+            # If running as Python script
+            script_path = sys.executable
+            args = [os.path.abspath(__file__)]
+        
+        # Add any additional command line arguments
+        args.extend(sys.argv[1:])
+        
+        # Method 1: Using ShellExecuteW with proper arguments
+        try:
+            # Convert arguments to a single string
+            args_str = ' '.join(f'"{arg}"' for arg in args)
+            
+            result = ctypes.windll.shell32.ShellExecuteW(
+                None, 
+                "runas", 
+                script_path, 
+                args_str, 
+                None, 
+                1  # SW_SHOWNORMAL
+            )
+            
+            # If ShellExecuteW returns a value > 32, it was successful
+            if result > 32:
+                return True
+        except Exception as e:
+            print(f"Method 1 failed: {e}")
+        
+        # Method 2: Using PowerShell Start-Process
+        try:
+            # Escape arguments properly for PowerShell
+            escaped_args = []
+            for arg in args:
+                # Escape quotes and backslashes for PowerShell
+                escaped_arg = arg.replace('"', '""').replace('\\', '\\\\')
+                escaped_args.append(f'"{escaped_arg}"')
+            
+            args_str = ', '.join(escaped_args) if escaped_args else ''
+            
+            ps_command = f"""
+            Start-Process -FilePath '{script_path}' -ArgumentList @({args_str}) -Verb RunAs -WindowStyle Normal
+            """
+            
+            result = subprocess.run([
+                'powershell', '-WindowStyle', 'Hidden', '-Command', ps_command
+            ], capture_output=True, text=True, timeout=30)
+            
+            if result.returncode == 0:
+                return True
+        except Exception as e:
+            print(f"Method 2 failed: {e}")
+        
+        # Method 3: Create a batch file (fallback)
+        try:
+            script_dir = os.path.dirname(os.path.abspath(__file__))
+            batch_path = os.path.join(script_dir, "restart_admin.bat")
+            
+            # Create batch file content
+            args_str = ' '.join(f'"{arg}"' for arg in args)
+            batch_content = f'''@echo off
+cd /d "{script_dir}"
+powershell -Command "Start-Process -FilePath '{script_path}' -ArgumentList '{args_str}' -Verb RunAs"
+del "%~f0"
+'''
+            
+            with open(batch_path, 'w') as f:
+                f.write(batch_content)
+            
+            # Execute the batch file
+            subprocess.Popen([batch_path], shell=True)
+            return True
+            
+        except Exception as e:
+            print(f"Method 3 failed: {e}")
+        
+        return False
+        
+    except Exception as e:
+        print(f"Error restarting as admin: {e}")
+        return False
+
+def check_chocolatey_installed():
+    """Check if Chocolatey is installed"""
+    try:
+        # Try multiple ways to check for Chocolatey
+        result = subprocess.run(['choco', '--version'], 
+                              capture_output=True, text=True, timeout=10, shell=True)
+        if result.returncode == 0:
+            return True
+        
+        # Check if choco.exe exists in common locations
+        choco_paths = [
+            r"C:\ProgramData\chocolatey\bin\choco.exe",
+            r"C:\chocolatey\bin\choco.exe",
+            os.path.expandvars(r"%ALLUSERSPROFILE%\chocolatey\bin\choco.exe")
+        ]
+        
+        for path in choco_paths:
+            if os.path.exists(path):
+                return True
+                
+        return False
+    except:
+        return False
+
+def install_chocolatey():
+    """Install Chocolatey package manager"""
+    try:
+        # PowerShell command to install Chocolatey
+        ps_command = """
+        Set-ExecutionPolicy Bypass -Scope Process -Force;
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+        """
+        
+        # Try using PowerShell directly
+        result = subprocess.run([
+            'powershell', '-ExecutionPolicy', 'Bypass', '-Command', ps_command
+        ], capture_output=True, text=True, timeout=300, shell=True)
+        
+        if result.returncode == 0:
+            # Refresh environment variables
+            subprocess.run(['refreshenv'], shell=True, capture_output=True)
+            return True
+        
+        # Alternative method using cmd
+        cmd_command = f'powershell -ExecutionPolicy Bypass -Command "{ps_command}"'
+        result = subprocess.run(cmd_command, shell=True, capture_output=True, text=True, timeout=300)
+        
+        return result.returncode == 0
+        
+    except Exception as e:
+        print(f"Error installing Chocolatey: {e}")
+        return False
 
 class LoadingScreen(QSplashScreen):
     def __init__(self):
@@ -45,7 +199,7 @@ class LoadingScreen(QSplashScreen):
         painter.setPen(QColor(125, 133, 144))
         painter.setFont(QFont("Segoe UI", 12))
         subtitle_rect = QRect(0, 120, self.width(), 25)
-        painter.drawText(subtitle_rect, Qt.AlignCenter, "Software Package Installer")
+        painter.drawText(subtitle_rect, Qt.AlignCenter, "Chocolatey Package Installer")
         
         bar_width = 300
         bar_height = 4
@@ -67,7 +221,7 @@ class LoadingScreen(QSplashScreen):
         painter.setPen(QColor(125, 133, 144))
         painter.setFont(QFont("Segoe UI", 10))
         status_rect = QRect(0, 220, self.width(), 25)
-        painter.drawText(status_rect, Qt.AlignCenter, "Loading application data...")
+        painter.drawText(status_rect, Qt.AlignCenter, "Checking system requirements...")
     
     def update_progress(self):
         self.progress = (self.progress + 2) % 101
@@ -98,10 +252,16 @@ class CustomTitleBar(QFrame):
         title_label.setStyleSheet("color: #58a6ff; border: none;")
         layout.addWidget(title_label)
         
-        subtitle_label = QLabel("Software Package Installer")
+        subtitle_label = QLabel("Chocolatey Package Installer")
         subtitle_label.setFont(QFont("Segoe UI", 9))
         subtitle_label.setStyleSheet("color: #8b949e; border: none;")
         layout.addWidget(subtitle_label)
+        
+        # Admin indicator
+        admin_label = QLabel("🛡️ Admin" if is_admin() else "⚠️ Limited")
+        admin_label.setFont(QFont("Segoe UI", 8, QFont.Bold))
+        admin_label.setStyleSheet("color: #3fb950; border: none;" if is_admin() else "color: #f85149; border: none;")
+        layout.addWidget(admin_label)
         
         layout.addStretch()
         
@@ -180,7 +340,7 @@ class PulseButton(QPushButton):
         
         self.animation = QPropertyAnimation(self, b"size")
         self.animation.setDuration(1000)
-        self.animation.setLoopCount(-1)  # Infinite loop
+        self.animation.setLoopCount(-1)
         self.pulse_active = False
     
     def setup_style(self):
@@ -206,6 +366,12 @@ class PulseButton(QPushButton):
             "danger": {
                 "bg": "#da3633",
                 "hover": "#f85149",
+                "text": "#ffffff",
+                "disabled": "#21262d"
+            },
+            "warning": {
+                "bg": "#fb8500",
+                "hover": "#ffb700",
                 "text": "#ffffff",
                 "disabled": "#21262d"
             }
@@ -237,7 +403,6 @@ class PulseButton(QPushButton):
         """)
     
     def start_pulse(self):
-        """Start pulsing animation"""
         if not self.pulse_active:
             original_size = self.size()
             self.animation.setStartValue(original_size)
@@ -247,13 +412,11 @@ class PulseButton(QPushButton):
             self.pulse_active = True
     
     def stop_pulse(self):
-        """Stop pulsing animation"""
         if self.pulse_active:
             self.animation.stop()
             self.pulse_active = False
     
     def setEnabled(self, enabled):
-        """Override to control pulse animation"""
         super().setEnabled(enabled)
         if enabled:
             self.start_pulse()
@@ -268,8 +431,8 @@ class ModernCheckBox(QFrame):
         self.title = title
         self.description = description
         self.app_id = app_id
-        self.app_size = app_size  # Size in MB
-        self.app_icon = app_icon  # Icon from JSON
+        self.app_size = app_size
+        self.app_icon = app_icon
         self.is_checked = False
         self.setup_ui()
         self.setup_style()
@@ -277,7 +440,7 @@ class ModernCheckBox(QFrame):
     def setup_ui(self):
         self.setMinimumHeight(70)
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
-        self.setCursor(Qt.PointingHandCursor)  # Make entire card clickable
+        self.setCursor(Qt.PointingHandCursor)
         
         layout = QHBoxLayout(self)
         layout.setContentsMargins(18, 12, 18, 12)
@@ -332,7 +495,7 @@ class ModernCheckBox(QFrame):
             }
         """)
         
-        tooltip_text = f"{self.app_icon} {self.title}\n👤 Publisher: {self.get_publisher()}\n📊 Version: Latest\n💾 Size: ~{self.app_size}MB\n\nClick for more details"
+        tooltip_text = f"{self.app_icon} {self.title}\n📦 Package Manager: Chocolatey\n📊 Version: Latest\n💾 Size: ~{self.app_size}MB\n\nClick for more details"
         info_btn.setToolTip(tooltip_text)
         info_btn.clicked.connect(lambda: self.show_app_info())
         title_layout.addWidget(info_btn)
@@ -357,54 +520,18 @@ class ModernCheckBox(QFrame):
         layout.addWidget(size_label)
     
     def _on_checkbox_changed(self, state):
-        """Internal handler for checkbox state changes"""
         self.is_checked = state == Qt.Checked.value
         self.update_checkbox_appearance(state)
         self.stateChanged.emit(self.is_checked)
     
-    def get_publisher(self):
-        """Get publisher info for the app"""
-        publishers = {
-            "chrome": "Google LLC", "firefox": "Mozilla", "edge": "Microsoft",
-            "steam": "Valve Corporation", "epic": "Epic Games", "battle": "Blizzard",
-            "discord": "Discord Inc.", "vscode": "Microsoft", "git": "Git Team",
-            "vlc": "VideoLAN", "spotify": "Spotify AB", "obs": "OBS Project",
-            "libre": "The Document Foundation", "notepad": "Don Ho", 
-            "sumatra": "Krzysztof Kowalczyk", "power": "Microsoft"
-        }
-        
-        title_lower = self.title.lower()
-        for key, publisher in publishers.items():
-            if key in title_lower:
-                return publisher
-        return "Unknown Publisher"
-    
-    def get_license(self):
-        """Get license info for the app"""
-        licenses = {
-            "chrome": "Proprietary", "firefox": "MPL 2.0", "edge": "Proprietary",
-            "steam": "Proprietary", "epic": "Proprietary", "battle": "Proprietary",
-            "discord": "Proprietary", "vscode": "MIT", "git": "GPL v2",
-            "vlc": "GPL v2", "spotify": "Proprietary", "obs": "GPL v2",
-            "libre": "MPL 2.0", "notepad": "GPL v3", "sumatra": "GPL v3",
-            "power": "Proprietary"
-        }
-        
-        title_lower = self.title.lower()
-        for key, license in licenses.items():
-            if key in title_lower:
-                return license
-        return "Unknown"
-    
     def show_app_info(self):
-        """Show detailed app information"""
         QMessageBox.information(self, f"{self.title} - Information", 
                                f"Application: {self.title}\n"
-                               f"Publisher: {self.get_publisher()}\n"
+                               f"Package Manager: Chocolatey\n"
                                f"Description: {self.description}\n"
                                f"Version: Latest Available\n"
                                f"Size: ~{self.app_size} MB\n"
-                               f"License: {self.get_license()}")
+                               f"Installation: Automated via Chocolatey")
     
     def setup_style(self):
         self.checkbox.setStyleSheet("""
@@ -475,7 +602,6 @@ class ModernCheckBox(QFrame):
             """)
     
     def mousePressEvent(self, event):
-        """Make entire card clickable"""
         if event.button() == Qt.LeftButton:
             new_state = not self.checkbox.isChecked()
             self.checkbox.setChecked(new_state)
@@ -494,7 +620,6 @@ class ModernCheckBox(QFrame):
         self.stateChanged.emit(checked)
     
     def get_size(self):
-        """Return app size in MB"""
         return self.app_size
 
 class CategoryButton(QPushButton):
@@ -581,7 +706,7 @@ class EmptyStateWidget(QWidget):
         title_label.setAlignment(Qt.AlignCenter)
         layout.addWidget(title_label)
         
-        message_label = QLabel("Select applications from the list above to install them.")
+        message_label = QLabel("Select applications from the list above to install them via Chocolatey.")
         message_label.setFont(QFont("Segoe UI", 11))
         message_label.setStyleSheet("color: #6e7681;")
         message_label.setAlignment(Qt.AlignCenter)
@@ -593,13 +718,15 @@ class DataLoader(QThread):
     status_updated = Signal(str)
     error_occurred = Signal(str)
     
+    def __init__(self, url=None, use_chocolatey=True):
+        super().__init__()
+        self.url = url or ("https://raw.githubusercontent.com/ice-exe/Spaller/refs/heads/main/resources/choco_data.json" if use_chocolatey else "https://raw.githubusercontent.com/ice-exe/Spaller/refs/heads/main/resources/apps_data.json")
+        self.use_chocolatey = use_chocolatey
+    
     def run(self):
         try:
             self.status_updated.emit("Connecting to server...")
-            response = requests.get(
-                "https://raw.githubusercontent.com/ice-exe/Spaller/main/resources/apps_data.json",
-                timeout=15
-            )
+            response = requests.get(self.url, timeout=15)
             response.raise_for_status()
             
             self.status_updated.emit("Processing data...")
@@ -611,6 +738,34 @@ class DataLoader(QThread):
         except Exception as e:
             self.error_occurred.emit(str(e))
 
+class ChocolateySetupThread(QThread):
+    setup_completed = Signal(bool, str)
+    progress_updated = Signal(str)
+    
+    def run(self):
+        try:
+            self.progress_updated.emit("Checking Chocolatey installation...")
+            
+            if check_chocolatey_installed():
+                self.setup_completed.emit(True, "Chocolatey is already installed")
+                return
+            
+            self.progress_updated.emit("Installing Chocolatey...")
+            
+            if install_chocolatey():
+                self.progress_updated.emit("Verifying installation...")
+                time.sleep(5)  # Wait for installation to complete
+                
+                if check_chocolatey_installed():
+                    self.setup_completed.emit(True, "Chocolatey installed successfully")
+                else:
+                    self.setup_completed.emit(False, "Chocolatey installation verification failed")
+            else:
+                self.setup_completed.emit(False, "Failed to install Chocolatey")
+                
+        except Exception as e:
+            self.setup_completed.emit(False, f"Error during setup: {str(e)}")
+
 class SpallerMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -620,11 +775,11 @@ class SpallerMainWindow(QMainWindow):
         self.current_category = None
         self.category_buttons = {}
         self.downloading = False
-        
-        self.download_path = os.path.join(os.path.expanduser("~"), "Downloads", "Spaller")
+        self.chocolatey_ready = False
+        self.installation_mode = "chocolatey"  # or "direct"
         
         self.setup_ui()
-        self.load_data()
+        self.check_prerequisites()
     
     def setup_ui(self):
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -665,13 +820,11 @@ class SpallerMainWindow(QMainWindow):
         content_layout.setSpacing(0)
         
         self.create_sidebar(content_layout)
-        
         self.create_main_content(content_layout)
         
         main_layout.addLayout(content_layout)
         
         self.create_bottom_section(main_layout)
-        
         self.create_footer(main_layout)
     
     def create_header(self, layout):
@@ -690,22 +843,21 @@ class SpallerMainWindow(QMainWindow):
         header_layout.setContentsMargins(25, 15, 25, 15)
         header_layout.setSpacing(20)
         
-        path_layout = QVBoxLayout()
-        path_layout.setSpacing(3)
+        # Chocolatey status
+        choco_layout = QVBoxLayout()
+        choco_layout.setSpacing(3)
         
-        path_label = QLabel("📁 Download Path:")
-        path_label.setFont(QFont("Segoe UI", 8))
-        path_label.setStyleSheet("color: #8b949e; border: none;")
-        path_layout.addWidget(path_label)
+        choco_label = QLabel("📦 Package Manager:")
+        choco_label.setFont(QFont("Segoe UI", 8))
+        choco_label.setStyleSheet("color: #8b949e; border: none;")
+        choco_layout.addWidget(choco_label)
         
-        self.path_display = QLabel(self.truncate_path(self.download_path))
-        self.path_display.setFont(QFont("Segoe UI", 9, QFont.Bold))
-        self.path_display.setStyleSheet("color: #f0f6fc; border: none;")
-        self.path_display.setToolTip(self.download_path)  # Full path on hover
-        self.path_display.setMaximumWidth(300)
-        path_layout.addWidget(self.path_display)
+        self.choco_status = QLabel("Chocolatey (Checking...)")
+        self.choco_status.setFont(QFont("Segoe UI", 9, QFont.Bold))
+        self.choco_status.setStyleSheet("color: #f0f6fc; border: none;")
+        choco_layout.addWidget(self.choco_status)
         
-        header_layout.addLayout(path_layout)
+        header_layout.addLayout(choco_layout)
         
         search_layout = QVBoxLayout()
         search_layout.setSpacing(3)
@@ -738,7 +890,7 @@ class SpallerMainWindow(QMainWindow):
         header_layout.addStretch()
         
         buttons_layout = QHBoxLayout()
-        buttons_layout.setSpacing(15)  # More spacing between button groups
+        buttons_layout.setSpacing(15)
         
         selection_group = QHBoxLayout()
         selection_group.setSpacing(8)
@@ -748,90 +900,18 @@ class SpallerMainWindow(QMainWindow):
         self.select_all_btn.clicked.connect(self.toggle_select_all)
         selection_group.addWidget(self.select_all_btn)
         
+        # Add manual restart button if not admin
+        if not is_admin():
+            self.restart_admin_btn = PulseButton("Run as Admin", "warning", "🛡️")
+            self.restart_admin_btn.setFixedSize(100, 28)
+            self.restart_admin_btn.clicked.connect(self.manual_restart_admin)
+            selection_group.addWidget(self.restart_admin_btn)
+        
         buttons_layout.addLayout(selection_group)
-        
-        path_group = QHBoxLayout()
-        path_group.setSpacing(8)
-        
-        self.path_btn = PulseButton("Choose Path", "secondary", "📁")
-        self.path_btn.setFixedSize(110, 30)
-        self.path_btn.clicked.connect(self.choose_path)
-        path_group.addWidget(self.path_btn)
-        
-        buttons_layout.addLayout(path_group)
         
         header_layout.addLayout(buttons_layout)
         
         layout.addWidget(header)
-    
-    def truncate_path(self, path, max_length=35):
-        """Truncate path for display"""
-        if len(path) <= max_length:
-            return path
-        return "..." + path[-(max_length-3):]
-    
-    def filter_apps(self, text):
-        """Filter applications globally across all categories"""
-        if not hasattr(self, 'apps_data') or not self.apps_data:
-            return
-        
-        search_text = text.lower()
-        
-        if not search_text:
-            if self.current_category:
-                self.switch_category(self.current_category)
-            return
-        
-        self.app_checkboxes.clear()
-        while self.scroll_layout.count():
-            child = self.scroll_layout.takeAt(0)
-            if child.widget():
-                child.widget().deleteLater()
-        
-        found_apps = []
-        for category, apps in self.apps_data.items():
-            for app_name, app_info in apps.items():
-                if (search_text in app_name.lower() or 
-                    search_text in app_info.get('description', '').lower()):
-                    found_apps.append((category, app_name, app_info))
-        
-        self.category_title.setText(f"Search Results for '{text}'")
-        self.category_count.setText(f"({len(found_apps)} applications found)")
-        
-        for category, app_name, app_info in found_apps:
-            app_id = f"{category}:{app_name}"
-            
-            app_size = app_info.get('size', 50)
-            app_icon = app_info.get('icon', '📦')
-            
-            checkbox = ModernCheckBox(app_name, app_info['description'], app_id, app_size, app_icon)
-            self.scroll_layout.addWidget(checkbox)
-            
-            self.app_checkboxes[app_id] = checkbox
-            
-            if app_id in self.selected_apps:
-                checkbox.setChecked(self.selected_apps[app_id]['selected'])
-            
-            checkbox.stateChanged.connect(
-                lambda checked, aid=app_id: self.update_selection(aid, checked)
-            )
-        
-        if not found_apps:
-            empty_widget = QWidget()
-            empty_layout = QVBoxLayout(empty_widget)
-            empty_layout.setAlignment(Qt.AlignCenter)
-            
-            empty_label = QLabel("No applications found matching your search.")
-            empty_label.setFont(QFont("Segoe UI", 12))
-            empty_label.setStyleSheet("color: #8b949e;")
-            empty_label.setAlignment(Qt.AlignCenter)
-            
-            empty_layout.addWidget(empty_label)
-            self.scroll_layout.addWidget(empty_widget)
-        
-        self.scroll_layout.addStretch()
-        
-        self.update_selected_count()
     
     def create_sidebar(self, layout):
         sidebar = QFrame()
@@ -944,7 +1024,6 @@ class SpallerMainWindow(QMainWindow):
         self.scroll_layout.setContentsMargins(0, 0, 8, 0)
         self.scroll_layout.setSpacing(6)
         
-        # Empty state widget (will be shown when no apps are selected)
         self.empty_state = EmptyStateWidget()
         
         scroll_area.setWidget(self.scroll_widget)
@@ -954,7 +1033,7 @@ class SpallerMainWindow(QMainWindow):
     
     def create_bottom_section(self, layout):
         bottom_frame = QFrame()
-        bottom_frame.setFixedHeight(85)  # Increased height for better spacing
+        bottom_frame.setFixedHeight(100)  # Increased height to accommodate better spacing
         bottom_frame.setStyleSheet("""
             QFrame {
                 background-color: #0d1117;
@@ -964,45 +1043,61 @@ class SpallerMainWindow(QMainWindow):
         """)
         
         bottom_layout = QVBoxLayout(bottom_frame)
-        bottom_layout.setContentsMargins(30, 20, 30, 20)  # Better margins
-        bottom_layout.setSpacing(12)  # More spacing between elements
+        bottom_layout.setContentsMargins(25, 15, 25, 15)
+        bottom_layout.setSpacing(8)
         
+        # Top row with selection info and install button
         top_row_layout = QHBoxLayout()
-        top_row_layout.setSpacing(15)
+        top_row_layout.setSpacing(20)
+        
+        # Selection info section
+        selection_info_layout = QVBoxLayout()
+        selection_info_layout.setSpacing(2)
         
         self.selected_count_label = QLabel("No applications selected")
-        self.selected_count_label.setFont(QFont("Segoe UI", 10))  # Slightly larger font
+        self.selected_count_label.setFont(QFont("Segoe UI", 11, QFont.Bold))
         self.selected_count_label.setStyleSheet("color: #8b949e; border: none;")
-        top_row_layout.addWidget(self.selected_count_label)
+        selection_info_layout.addWidget(self.selected_count_label)
         
-        top_row_layout.addStretch(1)  # Push button to the right
+        self.size_info_label = QLabel("")
+        self.size_info_label.setFont(QFont("Segoe UI", 9))
+        self.size_info_label.setStyleSheet("color: #6e7681; border: none;")
+        selection_info_layout.addWidget(self.size_info_label)
         
-        self.install_btn = PulseButton("Start", "primary", "▶")
-        self.install_btn.setFixedSize(120, 45)  # Significantly increased height from 36 to 45
+        top_row_layout.addLayout(selection_info_layout)
+        top_row_layout.addStretch(1)
+        
+        # Install button with better sizing
+        self.install_btn = PulseButton("📦 Install Selected", "primary")
+        self.install_btn.setFixedSize(160, 35)  # Reduced size
+        self.install_btn.setFont(QFont("Segoe UI", 10, QFont.Bold))
         self.install_btn.clicked.connect(self.start_installation)
-        self.install_btn.setEnabled(False)  # Start disabled
+        self.install_btn.setEnabled(False)
         top_row_layout.addWidget(self.install_btn)
         
         bottom_layout.addLayout(top_row_layout)
         
+        # Progress section
         progress_layout = QHBoxLayout()
-        progress_layout.setSpacing(20)  # More spacing
-
-        self.status_label = QLabel("Ready to install")
-        self.status_label.setFont(QFont("Segoe UI", 10, QFont.Bold))
+        progress_layout.setSpacing(15)
+        
+        # Status label
+        self.status_label = QLabel("Checking system requirements...")
+        self.status_label.setFont(QFont("Segoe UI", 9, QFont.Bold))
         self.status_label.setStyleSheet("color: #f0f6fc; border: none;")
-        self.status_label.setFixedWidth(140)  # Further reduced width
+        self.status_label.setFixedWidth(180)
         progress_layout.addWidget(self.status_label)
-
-        # Progress bar in the middle - improved styling with proper alignment
+        
+        # Progress bar container
         progress_container = QWidget()
-        progress_container.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)  # Allow progress bar to expand
+        progress_container.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        progress_container.setFixedHeight(20)
         progress_container_layout = QVBoxLayout(progress_container)
-        progress_container_layout.setContentsMargins(0, 0, 0, 0)
+        progress_container_layout.setContentsMargins(0, 4, 0, 4)
         progress_container_layout.setSpacing(0)
-
+        
         self.progress_bar = QProgressBar()
-        self.progress_bar.setFixedHeight(12)  # Taller progress bar
+        self.progress_bar.setFixedHeight(12)
         self.progress_bar.setStyleSheet("""
             QProgressBar {
                 border: none;
@@ -1010,7 +1105,7 @@ class SpallerMainWindow(QMainWindow):
                 background-color: #21262d;
                 text-align: center;
                 color: #f0f6fc;
-                font-size: 9px;
+                font-size: 8px;
                 font-weight: bold;
             }
             QProgressBar::chunk {
@@ -1020,13 +1115,68 @@ class SpallerMainWindow(QMainWindow):
             }
         """)
         progress_container_layout.addWidget(self.progress_bar, 0, Qt.AlignVCenter)
-        progress_layout.addWidget(progress_container, 1)  # Give progress bar stretch factor of 1
+        progress_layout.addWidget(progress_container, 1)
         
-        # Add a spacer widget to create space where the button used to be
-        spacer_widget = QWidget()
-        spacer_widget.setFixedWidth(140)  # Width similar to the button container
-        progress_layout.addWidget(spacer_widget)
-
+        # Action buttons section
+        actions_layout = QVBoxLayout()
+        actions_layout.setSpacing(3)
+        
+        actions_row = QHBoxLayout()
+        actions_row.setSpacing(6)
+        
+        self.cancel_btn = QPushButton("Cancel")
+        self.cancel_btn.setFixedSize(60, 24)
+        self.cancel_btn.setFont(QFont("Segoe UI", 8))
+        self.cancel_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #21262d;
+                color: #f0f6fc;
+                border: 1px solid #30363d;
+                border-radius: 4px;
+                padding: 4px 8px;
+            }
+            QPushButton:hover {
+                background-color: #30363d;
+                border-color: #58a6ff;
+            }
+            QPushButton:disabled {
+                background-color: #161b22;
+                color: #484f58;
+                border-color: #21262d;
+            }
+        """)
+        self.cancel_btn.setEnabled(False)
+        self.cancel_btn.clicked.connect(self.cancel_installation)
+        actions_row.addWidget(self.cancel_btn)
+        
+        self.pause_btn = QPushButton("Pause")
+        self.pause_btn.setFixedSize(60, 24)
+        self.pause_btn.setFont(QFont("Segoe UI", 8))
+        self.pause_btn.setStyleSheet("""
+            QPushButton {
+                background-color: #21262d;
+                color: #f0f6fc;
+                border: 1px solid #30363d;
+                border-radius: 4px;
+                padding: 4px 8px;
+            }
+            QPushButton:hover {
+                background-color: #30363d;
+                border-color: #58a6ff;
+            }
+            QPushButton:disabled {
+                background-color: #161b22;
+                color: #484f58;
+                border-color: #21262d;
+            }
+        """)
+        self.pause_btn.setEnabled(False)
+        self.pause_btn.clicked.connect(self.pause_installation)
+        actions_row.addWidget(self.pause_btn)
+        
+        actions_layout.addLayout(actions_row)
+        progress_layout.addLayout(actions_layout)
+        
         bottom_layout.addLayout(progress_layout)
         
         layout.addWidget(bottom_frame)
@@ -1051,15 +1201,126 @@ class SpallerMainWindow(QMainWindow):
         
         footer_layout.addStretch()
         
-        version_label = QLabel("v2.0.0")
+        version_label = QLabel("v2.1.0 - Chocolatey Edition")
         version_label.setFont(QFont("Segoe UI", 8))
         version_label.setStyleSheet("color: #8b949e; border: none;")
         footer_layout.addWidget(version_label)
         
         layout.addWidget(footer)
     
+    def check_prerequisites(self):
+        """Check admin privileges and Chocolatey installation with improved handling"""
+        if not is_admin():
+            reply = QMessageBox.question(
+                self, 
+                "Administrator Required",
+                "This application requires administrator privileges to install software via Chocolatey.\n\n"
+                "Options:\n"
+                "• Yes: Try to restart as administrator\n"
+                "• No: Continue with limited functionality\n"
+                "• Cancel: Exit application\n\n"
+                "Note: Without admin rights, installations may fail.",
+                QMessageBox.Yes | QMessageBox.No | QMessageBox.Cancel
+            )
+            
+            if reply == QMessageBox.Yes:
+                try:
+                    success = run_as_admin()
+                    if success:
+                        # Give the new process time to start
+                        QTimer.singleShot(2000, lambda: QApplication.quit())
+                        return
+                    else:
+                        # If failed, show error and continue with limited functionality
+                        QMessageBox.warning(
+                            self, 
+                            "Restart Failed", 
+                            "Failed to restart as administrator.\n\n"
+                            "You can:\n"
+                            "1. Right-click the application and select 'Run as administrator'\n"
+                            "2. Continue with limited functionality (some installations may fail)\n\n"
+                            "Continuing with limited functionality..."
+                        )
+                except Exception as e:
+                    QMessageBox.critical(
+                        self,
+                        "Error",
+                        f"An error occurred while trying to restart as administrator:\n{str(e)}\n\n"
+                        "Continuing with limited functionality..."
+                    )
+            elif reply == QMessageBox.Cancel:
+                QApplication.quit()
+                return
+            # If No, continue with limited functionality
+        
+        # Check Chocolatey installation
+        self.setup_chocolatey()
+    
+    def setup_chocolatey(self):
+        """Setup Chocolatey if needed"""
+        self.chocolatey_setup = ChocolateySetupThread()
+        self.chocolatey_setup.progress_updated.connect(self.update_setup_status)
+        self.chocolatey_setup.setup_completed.connect(self.on_chocolatey_setup_complete)
+        self.chocolatey_setup.start()
+    
+    def update_setup_status(self, status):
+        """Update status during Chocolatey setup"""
+        if hasattr(self, 'status_label'):
+            self.status_label.setText(status)
+    
+    def on_chocolatey_setup_complete(self, success, message):
+        """Handle Chocolatey setup completion"""
+        if success:
+            self.chocolatey_ready = True
+            self.installation_mode = "chocolatey"
+            self.choco_status.setText("Chocolatey (Ready)")
+            self.choco_status.setStyleSheet("color: #3fb950; border: none;")
+            self.load_data()
+        else:
+            self.choco_status.setText("Chocolatey (Failed)")
+            self.choco_status.setStyleSheet("color: #f85149; border: none;")
+            
+            reply = QMessageBox.critical(
+                self, 
+                "Chocolatey Setup Failed", 
+                f"Failed to setup Chocolatey:\n{message}\n\n"
+                "Options:\n"
+                "• Retry: Try installing Chocolatey again\n"
+                "• Fallback: Use direct downloads instead\n"
+                "• Manual: Open Chocolatey website for manual installation\n"
+                "• Exit: Close the application",
+                QMessageBox.Retry | QMessageBox.Ignore | QMessageBox.Help | QMessageBox.Close
+            )
+            
+            if reply == QMessageBox.Retry:
+                self.setup_chocolatey()
+            elif reply == QMessageBox.Ignore:  # Fallback option
+                self.installation_mode = "direct"
+                self.choco_status.setText("Direct Downloads (Fallback)")
+                self.choco_status.setStyleSheet("color: #fb8500; border: none;")
+                self.load_data_fallback()
+            elif reply == QMessageBox.Help:
+                webbrowser.open('https://chocolatey.org/install')
+                self.close()
+            else:
+                self.close()
+    
+    def load_data_fallback(self):
+        """Load data using the fallback direct download JSON"""
+        self.loader = DataLoader(use_chocolatey=False)
+        self.loader.data_loaded.connect(self.on_data_loaded)
+        self.loader.error_occurred.connect(self.on_data_error)
+        self.loader.start()
+    
     def load_data(self):
-        self.loader = DataLoader()
+        if self.chocolatey_ready:
+            self.choco_status.setText("Chocolatey (Ready)")
+            self.choco_status.setStyleSheet("color: #3fb950; border: none;")
+        else:
+            self.choco_status.setText("Chocolatey (Not Available)")
+            self.choco_status.setStyleSheet("color: #f85149; border: none;")
+        
+        self.loader = DataLoader(use_chocolatey=True)
         self.loader.data_loaded.connect(self.on_data_loaded)
         self.loader.error_occurred.connect(self.on_data_error)
         self.loader.start()
@@ -1071,9 +1332,13 @@ class SpallerMainWindow(QMainWindow):
         if self.apps_data:
             first_category = list(self.apps_data.keys())[0]
             self.switch_category(first_category)
+        
+        if self.chocolatey_ready:
+            self.status_label.setText("Ready to install packages")
+        else:
+            self.status_label.setText("Limited functionality - Chocolatey not available")
     
     def on_data_error(self, error):
-        
         result = QMessageBox.critical(
             self,
             "Connection Error",
@@ -1084,10 +1349,9 @@ class SpallerMainWindow(QMainWindow):
         if result == QMessageBox.Ok:
             webbrowser.open('https://abdvlrqhman.com/contact')
             
-        self.close()  # Close the application since we can't proceed without data
+        self.close()
     
     def initialize_selection_state(self):
-        """Initialize the global selection state for all apps"""
         self.selected_apps = {}
         for category, apps in self.apps_data.items():
             for app_name, app_info in apps.items():
@@ -1145,35 +1409,48 @@ class SpallerMainWindow(QMainWindow):
                 )
         
         self.scroll_layout.addStretch()
-        
         self.update_selected_count()
     
     def update_selection(self, app_id, checked):
-        """Update the global selection state"""
         if app_id in self.selected_apps:
             self.selected_apps[app_id]['selected'] = checked
             self.update_selected_count()
     
     def update_selected_count(self):
-        """Update the selected applications count with enhanced feedback"""
         selected_count = sum(1 for app in self.selected_apps.values() if app['selected'])
         
         if selected_count == 0:
-            self.selected_count_label.setText("Select applications to install from the list above")
+            self.selected_count_label.setText("No applications selected")
             self.selected_count_label.setStyleSheet("color: #8b949e; border: none; font-style: italic;")
-            self.install_btn.setText("Start")
+            
+            if self.installation_mode == "chocolatey":
+                self.size_info_label.setText("Select apps from the list to install via Chocolatey")
+                self.install_btn.setText("📦 Install Selected")
+            else:
+                self.size_info_label.setText("Select apps from the list to install via direct download")
+                self.install_btn.setText("⬇️ Install Selected")
+            
+            self.size_info_label.setStyleSheet("color: #6e7681; border: none; font-style: italic;")
             self.install_btn.setEnabled(False)
         else:
             estimated_size = sum(app['size'] for app in self.selected_apps.values() if app['selected'])
             size_text = f"{estimated_size} MB" if estimated_size < 1000 else f"{estimated_size/1000:.1f} GB"
-            
+        
             if selected_count == 1:
-                self.selected_count_label.setText(f"1 app selected • ~{size_text} total")
+                self.selected_count_label.setText(f"1 application selected")
+                self.size_info_label.setText(f"Estimated download: ~{size_text}")
             else:
-                self.selected_count_label.setText(f"{selected_count} apps selected • ~{size_text} total")
-            
+                self.selected_count_label.setText(f"{selected_count} applications selected")
+                self.size_info_label.setText(f"Total estimated download: ~{size_text}")
+        
             self.selected_count_label.setStyleSheet("color: #58a6ff; border: none; font-weight: bold;")
-            self.install_btn.setText("Start")  # Always just "Start"
+            self.size_info_label.setStyleSheet("color: #3fb950; border: none;")
+            
+            if self.installation_mode == "chocolatey":
+                self.install_btn.setText(f"📦 Install {selected_count} App{'s' if selected_count > 1 else ''}")
+            else:
+                self.install_btn.setText(f"⬇️ Install {selected_count} App{'s' if selected_count > 1 else ''}")
+            
             self.install_btn.setEnabled(True)
     
     def select_current_category(self):
@@ -1207,12 +1484,99 @@ class SpallerMainWindow(QMainWindow):
         self.select_all_btn.setText("Deselect All" if not all_selected else "Select All")
         self.update_selected_count()
     
-    def choose_path(self):
-        path = QFileDialog.getExistingDirectory(self, "Choose Download Directory")
-        if path:
-            self.download_path = path
-            self.path_display.setText(self.truncate_path(path))
-            self.path_display.setToolTip(path)
+    def manual_restart_admin(self):
+        """Manual restart as admin button"""
+        reply = QMessageBox.question(
+            self,
+            "Restart as Administrator",
+            "This will close the current application and attempt to restart it with administrator privileges.\n\n"
+            "Continue?",
+            QMessageBox.Yes | QMessageBox.No
+        )
+        
+        if reply == QMessageBox.Yes:
+            try:
+                success = run_as_admin()
+                if success:
+                    # Give the new process time to start before closing
+                    QTimer.singleShot(2000, lambda: QApplication.quit())
+                else:
+                    QMessageBox.warning(
+                        self,
+                        "Restart Failed",
+                        "Failed to restart as administrator.\n\n"
+                        "Please try:\n"
+                        "1. Right-click the application file and select 'Run as administrator'\n"
+                        "2. Run from an elevated command prompt"
+                    )
+            except Exception as e:
+                QMessageBox.critical(
+                    self,
+                    "Error",
+                    f"An error occurred while trying to restart as administrator:\n{str(e)}"
+                )
+    
+    def filter_apps(self, text):
+        """Filter applications globally across all categories"""
+        if not hasattr(self, 'apps_data') or not self.apps_data:
+            return
+        
+        search_text = text.lower()
+        
+        if not search_text:
+            if self.current_category:
+                self.switch_category(self.current_category)
+            return
+        
+        self.app_checkboxes.clear()
+        while self.scroll_layout.count():
+            child = self.scroll_layout.takeAt(0)
+            if child.widget():
+                child.widget().deleteLater()
+        
+        found_apps = []
+        for category, apps in self.apps_data.items():
+            for app_name, app_info in apps.items():
+                if (search_text in app_name.lower() or 
+                    search_text in app_info.get('description', '').lower()):
+                    found_apps.append((category, app_name, app_info))
+        
+        self.category_title.setText(f"Search Results for '{text}'")
+        self.category_count.setText(f"({len(found_apps)} applications found)")
+        
+        for category, app_name, app_info in found_apps:
+            app_id = f"{category}:{app_name}"
+            
+            app_size = app_info.get('size', 50)
+            app_icon = app_info.get('icon', '📦')
+            
+            checkbox = ModernCheckBox(app_name, app_info['description'], app_id, app_size, app_icon)
+            self.scroll_layout.addWidget(checkbox)
+            
+            self.app_checkboxes[app_id] = checkbox
+            
+            if app_id in self.selected_apps:
+                checkbox.setChecked(self.selected_apps[app_id]['selected'])
+            
+            checkbox.stateChanged.connect(
+                lambda checked, aid=app_id: self.update_selection(aid, checked)
+            )
+        
+        if not found_apps:
+            empty_widget = QWidget()
+            empty_layout = QVBoxLayout(empty_widget)
+            empty_layout.setAlignment(Qt.AlignCenter)
+            
+            empty_label = QLabel("No applications found matching your search.")
+            empty_label.setFont(QFont("Segoe UI", 12))
+            empty_label.setStyleSheet("color: #8b949e;")
+            empty_label.setAlignment(Qt.AlignCenter)
+            
+            empty_layout.addWidget(empty_label)
+            self.scroll_layout.addWidget(empty_widget)
+        
+        self.scroll_layout.addStretch()
+        self.update_selected_count()
     
     def start_installation(self):
         if self.downloading:
@@ -1225,12 +1589,25 @@ class SpallerMainWindow(QMainWindow):
             QMessageBox.warning(self, "No Selection", "Please select at least one application to install.")
             return
         
+        if self.installation_mode == "chocolatey" and not self.chocolatey_ready:
+            reply = QMessageBox.warning(
+                self,
+                "Chocolatey Not Available",
+                "Chocolatey is not available on this system.\n\n"
+                "Installation may fail. Continue anyway?",
+                QMessageBox.Yes | QMessageBox.No
+            )
+            if reply != QMessageBox.Yes:
+                return
+        
         self.downloading = True
         self.install_btn.setEnabled(False)
-        self.install_btn.stop_pulse()  # Stop pulsing during installation
+        self.install_btn.stop_pulse()
         self.install_btn.setText("Installing...")
+        self.cancel_btn.setEnabled(True)
+        self.pause_btn.setEnabled(True)
         
-        self.installer = InstallationThread(selected_apps, self.download_path)
+        self.installer = InstallationThread(selected_apps, self.installation_mode)
         self.installer.progress_updated.connect(self.update_progress)
         self.installer.finished.connect(self.installation_finished)
         self.installer.start()
@@ -1248,134 +1625,202 @@ class SpallerMainWindow(QMainWindow):
         else:
             self.status_label.setText(status)
         
+        # Update install button text during installation
+        if self.downloading and total_apps > 0:
+            completed = int((value / 100) * total_apps)
+            self.install_btn.setText(f"Installing... ({completed}/{total_apps})")
+        
         if "error" in status.lower() or "failed" in status.lower():
             self.status_label.setStyleSheet("color: #f85149; border: none;")
         elif "completed" in status.lower():
             self.status_label.setStyleSheet("color: #3fb950; border: none;")
+        elif "installing" in status.lower():
+            self.status_label.setStyleSheet("color: #58a6ff; border: none;")
         else:
             self.status_label.setStyleSheet("color: #f0f6fc; border: none;")
     
     def installation_finished(self):
         self.downloading = False
         self.install_btn.setEnabled(True)
-        self.install_btn.setText("Start")
-        self.progress_bar.setFormat("")  # Clear percentage display
+        
+        if self.installation_mode == "chocolatey":
+            self.install_btn.setText("📦 Install via Chocolatey")
+        else:
+            self.install_btn.setText("⬇️ Install via Direct Download")
+        
+        self.cancel_btn.setEnabled(False)
+        self.pause_btn.setEnabled(False)
+        self.progress_bar.setFormat("")
         self.update_selected_count()
+
+    def cancel_installation(self):
+        """Cancel the current installation"""
+        if hasattr(self, 'installer') and self.installer.isRunning():
+            self.installer.terminate()
+            self.installer.wait(3000)  # Wait up to 3 seconds
+            self.installation_finished()
+            self.status_label.setText("Installation cancelled by user")
+            self.status_label.setStyleSheet("color: #f85149; border: none;")
+
+    def pause_installation(self):
+        """Pause/Resume installation (placeholder for future implementation)"""
+        if hasattr(self, 'installer') and self.installer.isRunning():
+            # This is a placeholder - actual pause/resume would require more complex implementation
+            QMessageBox.information(self, "Pause Feature", "Pause/Resume functionality will be available in a future update.")
 
 class InstallationThread(QThread):
     progress_updated = Signal(float, str, str, int)
     
-    def __init__(self, selected_apps, download_path):
+    def __init__(self, selected_apps, installation_mode="chocolatey"):
         super().__init__()
         self.selected_apps = selected_apps
-        self.download_path = download_path
+        self.installation_mode = installation_mode
     
     def run(self):
         try:
-            os.makedirs(self.download_path, exist_ok=True)
             total_apps = len(self.selected_apps)
             
             for i, (app_id, app_data) in enumerate(self.selected_apps):
                 app_name = app_data['name']
                 app_info = app_data['info']
-                app_size = app_data.get('size', 50)  # Get app size
                 
                 base_progress = (i / total_apps) * 100
                 
                 self.progress_updated.emit(
                     base_progress,
-                    f"Downloading ({i+1} of {total_apps})",
+                    f"Installing ({i+1} of {total_apps})",
                     app_name,
                     total_apps
                 )
                 
                 try:
-                    installer_path = self.download_file(app_info['url'], app_info['installer'], 
-                                                     base_progress, base_progress + 40, app_name, i+1, total_apps)
+                    if self.installation_mode == "chocolatey":
+                        success = self.install_via_chocolatey(app_info, app_name)
+                    else:
+                        success = self.install_via_direct_download(app_info, app_name)
                     
-                    self.progress_updated.emit(
-                        base_progress + 40,
-                        f"Installing ({i+1} of {total_apps})",
-                        app_name,
-                        total_apps
-                    )
-                    
-                    self.install_application(installer_path, app_name)
-                    
-                    self.progress_updated.emit(
-                        ((i + 1) / total_apps) * 100,
-                        f"Completed ({i+1} of {total_apps})",
-                        app_name,
-                        total_apps
-                    )
+                    if success:
+                        self.progress_updated.emit(
+                            ((i + 1) / total_apps) * 100,
+                            f"Completed ({i+1} of {total_apps})",
+                            app_name,
+                            total_apps
+                        )
+                    else:
+                        self.progress_updated.emit(
+                            ((i + 1) / total_apps) * 100,
+                            f"Failed ({i+1} of {total_apps})",
+                            f"{app_name} - Installation failed",
+                            total_apps
+                        )
                     
                 except Exception as e:
                     self.progress_updated.emit(
                         ((i + 1) / total_apps) * 100,
-                        f"Failed ({i+1} of {total_apps})",
+                        f"Error ({i+1} of {total_apps})",
                         f"{app_name} - {str(e)}",
                         total_apps
                     )
-                    continue
+                
+                # Small delay between installations
+                time.sleep(1)
             
             self.progress_updated.emit(100, "All installations completed!", "", 0)
             
         except Exception as e:
             self.progress_updated.emit(0, f"Error: {str(e)}", "", 0)
     
-    def download_file(self, url, filename, start_progress, end_progress, app_name, current, total):
-        file_path = os.path.join(self.download_path, filename)
+    def install_via_chocolatey(self, app_info, app_name):
+        """Install using Chocolatey command"""
+        chocolatey_command = app_info.get('chocolatey', '')
         
-        response = requests.get(url, stream=True, timeout=30,
-                              headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
-        response.raise_for_status()
+        if not chocolatey_command or chocolatey_command == "Built-in with Windows":
+            return False
         
-        total_size = int(response.headers.get('content-length', 0))
-        downloaded = 0
-        
-        with open(file_path, 'wb') as file:
-            for chunk in response.iter_content(chunk_size=8192):
-                if chunk:
-                    file.write(chunk)
-                    downloaded += len(chunk)
-                    
-                    if total_size > 0:
-                        download_progress = (downloaded / total_size) * (end_progress - start_progress)
-                        self.progress_updated.emit(
-                            start_progress + download_progress,
-                            f"Downloading ({current} of {total})",
-                            f"{app_name} - {downloaded // 1024} KB",
-                            total
-                        )
-        
-        return file_path
+        try:
+            result = subprocess.run(
+                chocolatey_command.split(),
+                capture_output=True,
+                text=True,
+                timeout=600,  # 10 minutes timeout
+                shell=True
+            )
+            return result.returncode == 0
+        except subprocess.TimeoutExpired:
+            return False
+        except Exception:
+            return False
     
-    def install_application(self, installer_path, app_name):
-        if installer_path.endswith('.msi'):
-            subprocess.run(['msiexec', '/i', installer_path, '/quiet', '/norestart'],
-                         check=True, timeout=300)
-        else:
-            subprocess.run([installer_path, '/S'], check=True, timeout=300)
+    def install_via_direct_download(self, app_info, app_name):
+        """Install using direct download"""
+        download_url = app_info.get('url', '')
+        installer_name = app_info.get('installer', f"{app_name.replace(' ', '_')}_installer.exe")
         
-        time.sleep(1)
+        if not download_url:
+            return False
+        
+        try:
+            # Download the installer
+            download_path = os.path.join(os.path.expanduser("~"), "Downloads", installer_name)
+            
+            response = requests.get(download_url, timeout=300, stream=True)
+            response.raise_for_status()
+            
+            with open(download_path, 'wb') as f:
+                for chunk in response.iter_content(chunk_size=8192):
+                    f.write(chunk)
+            
+            # Run the installer
+            if download_path.endswith('.msi'):
+                # MSI installer
+                result = subprocess.run([
+                    'msiexec', '/i', download_path, '/quiet', '/norestart'
+                ], capture_output=True, timeout=600)
+            else:
+                # EXE installer
+                result = subprocess.run([
+                    download_path, '/S', '/silent', '/quiet'
+                ], capture_output=True, timeout=600)
+            
+            # Clean up downloaded file
+            try:
+                os.remove(download_path)
+            except:
+                pass
+            
+            return result.returncode == 0
+            
+        except Exception:
+            return False
 
 def main():
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
     
-    icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "icon.ico")
-    if os.path.exists(icon_path):
-        app.setWindowIcon(QIcon(icon_path))
-    
-    splash = LoadingScreen()
-    splash.show()
-    
-    window = SpallerMainWindow()
-    
-    QTimer.singleShot(3000, splash.close)
-    QTimer.singleShot(3000, window.show)
-    
-    sys.exit(app.exec())
+    # Add error handling for the main function
+    try:
+        icon_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "icon.ico")
+        if os.path.exists(icon_path):
+            app.setWindowIcon(QIcon(icon_path))
+        
+        splash = LoadingScreen()
+        splash.show()
+        
+        window = SpallerMainWindow()
+        
+        QTimer.singleShot(3000, splash.close)
+        QTimer.singleShot(3000, window.show)
+        
+        sys.exit(app.exec())
+        
+    except Exception as e:
+        # If there's an error during startup, show a simple message box
+        try:
+            QMessageBox.critical(None, "Startup Error", f"An error occurred during startup:\n{str(e)}")
+        except:
+            # If even the message box fails, print to console
+            print(f"Critical startup error: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
