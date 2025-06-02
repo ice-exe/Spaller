@@ -1,10 +1,9 @@
-{More actions
+{
   "Browsers": {
     "Google Chrome": {
       "description": "Fast, secure web browser by Google",
       "url": "https://dl.google.com/chrome/install/latest/chrome_installer.exe",
       "installer": "chrome_installer.exe",
-      "chocolatey": "choco install googlechrome -y",
       "size": 85,
       "icon": "🌐"
     },
@@ -12,7 +11,6 @@
       "description": "Open-source web browser with privacy focus",
       "url": "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US",
       "installer": "firefox_installer.exe",
-      "chocolatey": "choco install firefox -y",
       "size": 92,
       "icon": "🦊"
     },
@@ -20,7 +18,6 @@
       "description": "Microsoft's modern web browser",
       "url": "https://www.microsoft.com/en-us/edge/download",
       "installer": "edge_installer.exe",
-      "chocolatey": "choco install microsoft-edge -y",
       "size": 110,
       "icon": "💠"
     },
@@ -28,7 +25,6 @@
       "description": "Privacy-focused browser with ad-blocking",
       "url": "https://laptop-updates.brave.com/latest/winx64",
       "installer": "brave_installer.exe",
-      "chocolatey": "choco install brave -y",
       "size": 78,
       "icon": "🛡️"
     },
@@ -36,7 +32,6 @@
       "description": "Feature-rich browser with built-in VPN",
       "url": "https://www.opera.com/download",
       "installer": "opera_installer.exe",
-      "chocolatey": "choco install opera -y",
       "size": 95,
       "icon": "🎭"
     },
@@ -44,7 +39,6 @@
       "description": "Highly customizable browser for power users",
       "url": "https://downloads.vivaldi.com/stable/Vivaldi.6.2.3105.48.x64.exe",
       "installer": "vivaldi_installer.exe",
-      "chocolatey": "choco install vivaldi -y",
       "size": 88,
       "icon": "🎨"
     }
@@ -54,7 +48,6 @@
       "description": "Digital distribution platform for games",
       "url": "https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe",
       "installer": "SteamSetup.exe",
-      "chocolatey": "choco install steam -y",
       "size": 156,
       "icon": "🎮"
     },
@@ -62,7 +55,6 @@
       "description": "Blizzard's gaming platform",
       "url": "https://www.battle.net/download/getInstallerForGame?os=win&locale=enUS&version=LIVE&gameProgram=BATTLENET_APP",
       "installer": "Battle.net-Setup.exe",
-      "chocolatey": "choco install battle.net -y",
       "size": 67,
       "icon": "⚔️"
     },
@@ -70,7 +62,6 @@
       "description": "Launcher for Fortnite and other Epic titles",
       "url": "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi",
       "installer": "epic_installer.msi",
-      "chocolatey": "choco install epicgameslauncher -y",
       "size": 160,
       "icon": "🕹️"
     },
@@ -78,7 +69,6 @@
       "description": "DRM-free game launcher from GOG",
       "url": "https://webinstallers.gog-statics.com/download/GOG_Galaxy_2.0.exe",
       "installer": "gog_installer.exe",
-      "chocolatey": "choco install goggalaxy -y",
       "size": 120,
       "icon": "🚀"
     },
@@ -86,7 +76,6 @@
       "description": "Ubisoft's game launcher and store",
       "url": "https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UbisoftConnectInstaller.exe",
       "installer": "ubisoft_installer.exe",
-      "chocolatey": "choco install ubisoft-connect -y",
       "size": 100,
       "icon": "🎯"
     },
@@ -94,7 +83,6 @@
       "description": "Launcher for Valorant, League of Legends, and other Riot titles",
       "url": "https://valorant.secure.dyn.riotcdn.net/channels/public/x/installer/current/live.live.ap.exe",
       "installer": "riot_installer.exe",
-      "chocolatey": "choco install riot-games -y",
       "size": 150,
       "icon": "🧨"
     },
@@ -102,7 +90,6 @@
       "description": "EA's gaming platform and launcher (replaces Origin)",
       "url": "https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-releases/EAappInstaller.exe",
       "installer": "ea_app_installer.exe",
-      "chocolatey": "choco install ea-app -y",
       "size": 85,
       "icon": "🎲"
     },
@@ -110,7 +97,6 @@
       "description": "Microsoft's gaming app for PC Game Pass",
       "url": "https://aka.ms/xboxinstaller",
       "installer": "xbox_app.exe",
-      "chocolatey": "choco install xbox-app -y",
       "size": 140,
       "icon": "🎮"
     }
@@ -120,7 +106,6 @@
       "description": "Free and open-source office suite",
       "url": "https://www.libreoffice.org/donate/dl/win-x86_64/25.2.3/en-US/LibreOffice_25.2.3_Win_x86-64.msi",
       "installer": "libreoffice_installer.msi",
-      "chocolatey": "choco install libreoffice-fresh -y",
       "size": 300,
       "icon": "📄"
     },
@@ -128,7 +113,6 @@
       "description": "Premium office suite from Microsoft",
       "url": "https://c2rsetup.officeapps.live.com/c2r/download.aspx?ProductreleaseID=O365HomePremRetail&platform=x64&language=en-us&version=O16GA",
       "installer": "office_installer.exe",
-      "chocolatey": "choco install office365business -y",
       "size": 400,
       "icon": "📊"
     },
@@ -136,7 +120,6 @@
       "description": "All-in-one workspace for notes and collaboration",
       "url": "https://desktop-release.notion-static.com/Notion Setup 4.12.1.exe",
       "installer": "notion_installer.exe",
-      "chocolatey": "choco install notion -y",
       "size": 180,
       "icon": "📝"
     },
@@ -144,7 +127,6 @@
       "description": "Knowledge management and note-taking app",
       "url": "https://obsidian.md/download",
       "installer": "obsidian_installer.exe",
-      "chocolatey": "choco install obsidian -y",
       "size": 120,
       "icon": "🧠"
     },
@@ -152,7 +134,6 @@
       "description": "Task management and productivity app",
       "url": "https://todoist.com/downloads/windows",
       "installer": "todoist_installer.exe",
-      "chocolatey": "choco install todoist -y",
       "size": 80,
       "icon": "✅"
     },
@@ -160,7 +141,6 @@
       "description": "Visual project management tool",
       "url": "https://trello.com/platforms",
       "installer": "trello_installer.exe",
-      "chocolatey": "choco install trello -y",
       "size": 75,
       "icon": "📋"
     },
@@ -168,7 +148,6 @@
       "description": "Note-taking and organization app",
       "url": "https://evernote.com/download",
       "installer": "evernote_installer.exe",
-      "chocolatey": "choco install evernote -y",
       "size": 200,
       "icon": "🐘"
     },
@@ -176,7 +155,6 @@
       "description": "Microsoft's digital note-taking app",
       "url": "https://www.onenote.com/download",
       "installer": "onenote_installer.exe",
-      "chocolatey": "choco install onenote -y",
       "size": 150,
       "icon": "📓"
     }
@@ -186,7 +164,6 @@
       "description": "Lightweight code editor with extensions",
       "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user",
       "installer": "vscode_installer.exe",
-      "chocolatey": "choco install vscode -y",
       "size": 85,
       "icon": "💻"
     },
@@ -194,7 +171,6 @@
       "description": "Advanced text editor for developers",
       "url": "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.4/npp.8.5.4.Installer.x64.exe",
       "installer": "notepadpp_installer.exe",
-      "chocolatey": "choco install notepadplusplus -y",
       "size": 10,
       "icon": "🗒️"
     },
@@ -202,7 +178,6 @@
       "description": "Version control system for developers",
       "url": "https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/Git-2.41.0.3-64-bit.exe",
       "installer": "git_installer.exe",
-      "chocolatey": "choco install git -y",
       "size": 50,
       "icon": "🌿"
     },
@@ -210,7 +185,6 @@
       "description": "JavaScript runtime for server-side development",
       "url": "https://nodejs.org/dist/v18.17.0/node-v18.17.0-x64.msi",
       "installer": "nodejs_installer.msi",
-      "chocolatey": "choco install nodejs -y",
       "size": 25,
       "icon": "🟢"
     },
@@ -218,7 +192,6 @@
       "description": "Popular programming language interpreter",
       "url": "https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe",
       "installer": "python_installer.exe",
-      "chocolatey": "choco install python -y",
       "size": 30,
       "icon": "🐍"
     },
@@ -226,7 +199,6 @@
       "description": "Powerful IDE for Java development",
       "url": "https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows",
       "installer": "intellij_installer.exe",
-      "chocolatey": "choco install intellijidea-community -y",
       "size": 800,
       "icon": "🧠"
     },
@@ -234,7 +206,6 @@
       "description": "Containerization platform for developers",
       "url": "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe",
       "installer": "docker_installer.exe",
-      "chocolatey": "choco install docker-desktop -y",
       "size": 500,
       "icon": "🐳"
     },
@@ -242,7 +213,6 @@
       "description": "API development and testing tool",
       "url": "https://dl.pstmn.io/download/latest/win64",
       "installer": "postman_installer.exe",
-      "chocolatey": "choco install postman -y",
       "size": 150,
       "icon": "📮"
     }
@@ -252,7 +222,6 @@
       "description": "Versatile media player for all formats",
       "url": "https://download.videolan.org/pub/videolan/vlc/3.0.18/win64/vlc-3.0.18-win64.exe",
       "installer": "vlc_installer.exe",
-      "chocolatey": "choco install vlc -y",
       "size": 40,
       "icon": "🎬"
     },
@@ -260,7 +229,6 @@
       "description": "Free streaming and recording software",
       "url": "https://cdn-fastly.obsproject.com/downloads/OBS-Studio-29.1.3-Full-Installer-x64.exe",
       "installer": "obs_installer.exe",
-      "chocolatey": "choco install obs-studio -y",
       "size": 120,
       "icon": "📹"
     },
@@ -268,7 +236,6 @@
       "description": "Free audio editing software",
       "url": "https://github.com/audacity/audacity/releases/download/Audacity-3.7.3/audacity-win-3.7.3-64bit.exe",
       "installer": "audacity_installer.exe",
-      "chocolatey": "choco install audacity -y",
       "size": 35,
       "icon": "🎵"
     },
@@ -276,7 +243,6 @@
       "description": "Free image editing software",
       "url": "https://download.gimp.org/gimp/v3.0/windows/gimp-3.0.4-setup.exe",
       "installer": "gimp_installer.exe",
-      "chocolatey": "choco install gimp -y",
       "size": 280,
       "icon": "🎨"
     },
@@ -284,7 +250,6 @@
       "description": "Music streaming service",
       "url": "https://download.scdn.co/SpotifySetup.exe",
       "installer": "spotify_installer.exe",
-      "chocolatey": "choco install spotify -y",
       "size": 95,
       "icon": "🎧"
     },
@@ -292,7 +257,6 @@
       "description": "Apple's media player and library",
       "url": "https://apple.co/ms",
       "installer": "itunes_installer.exe",
-      "chocolatey": "choco install itunes -y",
       "size": 270,
       "icon": "🍎"
     },
@@ -300,7 +264,6 @@
       "description": "Free digital painting software",
       "url": "https://download.kde.org/stable/krita/5.2.9/krita-x64-5.2.9-setup.exe",
       "installer": "krita_installer.exe",
-      "chocolatey": "choco install krita -y",
       "size": 180,
       "icon": "🖌️"
     },
@@ -308,7 +271,6 @@
       "description": "Video transcoder and converter",
       "url": "https://github.com/HandBrake/HandBrake/releases/download/1.6.1/HandBrake-1.6.1-x86_64-Win_GUI.exe",
       "installer": "handbrake_installer.exe",
-      "chocolatey": "choco install handbrake -y",
       "size": 15,
       "icon": "🎞️"
     }
@@ -318,7 +280,6 @@
       "description": "Voice and text chat for communities",
       "url": "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x64",
       "installer": "discord_installer.exe",
-      "chocolatey": "choco install discord -y",
       "size": 85,
       "icon": "💬"
     },
@@ -326,7 +287,6 @@
       "description": "Video conferencing and meetings",
       "url": "https://zoom.us/client/latest/ZoomInstaller.exe",
       "installer": "zoom_installer.exe",
-      "chocolatey": "choco install zoom -y",
       "size": 45,
       "icon": "📹"
     },
@@ -334,7 +294,6 @@
       "description": "Collaboration and communication platform",
       "url": "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=windows&arch=x64&managedInstaller=true&download=true",
       "installer": "teams_installer.exe",
-      "chocolatey": "choco install microsoft-teams -y",
       "size": 120,
       "icon": "👥"
     },
@@ -342,7 +301,6 @@
       "description": "Workplace communication tool",
       "url": "https://downloads.slack-edge.com/releases/windows/4.33.90/prod/x64/SlackSetup.exe",
       "installer": "slack_installer.exe",
-      "chocolatey": "choco install slack -y",
       "size": 110,
       "icon": "💼"
     },
@@ -350,7 +308,6 @@
       "description": "Fast and secure messaging app",
       "url": "https://telegram.org/dl/desktop/win64",
       "installer": "telegram_installer.exe",
-      "chocolatey": "choco install telegram -y",
       "size": 35,
       "icon": "✈️"
     },
@@ -358,7 +315,6 @@
       "description": "Popular messaging app for desktop",
       "url": "https://web.whatsapp.com/desktop/windows/release/x64/WhatsAppSetup.exe",
       "installer": "whatsapp_installer.exe",
-      "chocolatey": "choco install whatsapp -y",
       "size": 150,
       "icon": "💚"
     }
@@ -368,7 +324,6 @@
       "description": "High-compression file archiver",
       "url": "https://www.7-zip.org/a/7z2201-x64.exe",
       "installer": "7zip_installer.exe",
-      "chocolatey": "choco install 7zip -y",
       "size": 2,
       "icon": "🗜️"
     },
@@ -376,7 +331,6 @@
       "description": "File archiver utility for Windows",
       "url": "https://www.rarlab.com/rar/winrar-x64-611.exe",
       "installer": "winrar_installer.exe",
-      "chocolatey": "choco install winrar -y",
       "size": 3,
       "icon": "📦"
     },
@@ -384,7 +338,6 @@
       "description": "System cleaning and optimization tool",
       "url": "https://download.ccleaner.com/ccsetup602.exe",
       "installer": "ccleaner_installer.exe",
-      "chocolatey": "choco install ccleaner -y",
       "size": 25,
       "icon": "🧹"
     },
@@ -392,7 +345,6 @@
       "description": "Instant file and folder search utility",
       "url": "https://www.voidtools.com/Everything-1.4.1.1024.x64-Setup.exe",
       "installer": "everything_installer.exe",
-      "chocolatey": "choco install everything -y",
       "size": 3,
       "icon": "🔍"
     },
@@ -400,7 +352,6 @@
       "description": "Microsoft utilities for power users",
       "url": "https://github.com/microsoft/PowerToys/releases/download/v0.72.0/PowerToysSetup-0.72.0-x64.exe",
       "installer": "powertoys_installer.exe",
-      "chocolatey": "choco install powertoys -y",
       "size": 250,
       "icon": "⚡"
     },
@@ -408,7 +359,6 @@
       "description": "Disk space analyzer and cleaner",
       "url": "https://downloads.jam-software.de/treesize_free/TreeSizeFreeSetup.exe",
       "installer": "treesize_installer.exe",
-      "chocolatey": "choco install treesize-free -y",
       "size": 8,
       "icon": "🌳"
     },
@@ -416,7 +366,6 @@
       "description": "Screenshot tool with annotation features",
       "url": "https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot-INSTALLER-1.2.10.6-RELEASE.exe",
       "installer": "greenshot_installer.exe",
-      "chocolatey": "choco install greenshot -y",
       "size": 2,
       "icon": "📸"
     },
@@ -424,7 +373,6 @@
       "description": "Advanced system monitor and process manager",
       "url": "https://processhacker.sourceforge.io/downloads.php",
       "installer": "processhacker_installer.exe",
-      "chocolatey": "choco install processhacker -y",
       "size": 5,
       "icon": "⚙️"
     }
@@ -434,7 +382,6 @@
       "description": "Real-time antivirus protection",
       "url": "https://www.bitdefender.com/solutions/free.html",
       "installer": "bitdefender_installer.exe",
-      "chocolatey": "choco install bitdefender-antivirus-free -y",
       "size": 29,
       "icon": "🛡️"
     },
@@ -442,7 +389,6 @@
       "description": "Anti-malware and spyware protection",
       "url": "https://www.malwarebytes.com/mwb-download",
       "installer": "malwarebytes_installer.exe",
-      "chocolatey": "choco install malwarebytes -y",
       "size": 90,
       "icon": "🧬"
     },
@@ -450,7 +396,6 @@
       "description": "Secure and free VPN service",
       "url": "https://protonvpn.com/download",
       "installer": "protonvpn_installer.exe",
-      "chocolatey": "choco install protonvpn -y",
       "size": 21,
       "icon": "🔒"
     },
@@ -458,7 +403,6 @@
       "description": "Premium VPN service with global servers",
       "url": "https://nordvpn.com/download/windows/",
       "installer": "nordvpn_installer.exe",
-      "chocolatey": "choco install nordvpn -y",
       "size": 45,
       "icon": "🔐"
     },
@@ -466,7 +410,6 @@
       "description": "Open-source password manager",
       "url": "https://vault.bitwarden.com/download/?app=desktop&platform=windows",
       "installer": "bitwarden_installer.exe",
-      "chocolatey": "choco install bitwarden -y",
       "size": 85,
       "icon": "🔑"
     },
@@ -474,7 +417,6 @@
       "description": "Built-in Windows security solution",
       "url": "Built-in with Windows",
       "installer": "N/A",
-      "chocolatey": "Built-in with Windows",
       "size": 0,
       "icon": "🛡️"
     },
@@ -482,7 +424,6 @@
       "description": "Disk encryption software",
       "url": "https://launchpad.net/veracrypt/trunk/1.25.9/+download/VeraCrypt%20Setup%201.25.9.exe",
       "installer": "veracrypt_installer.exe",
-      "chocolatey": "choco install veracrypt -y",
       "size": 25,
       "icon": "🔐"
     }
@@ -492,7 +433,6 @@
       "description": "Free FTP client for file transfers",
       "url": "https://download.filezilla-project.org/client/FileZilla_3.69.1_win64_sponsored2-setup.exe",
       "installer": "filezilla_installer.exe",
-      "chocolatey": "choco install filezilla -y",
       "size": 12,
       "icon": "📁"
     },
@@ -500,7 +440,6 @@
       "description": "SFTP and FTP client for Windows",
       "url": "https://winscp.net/download/WinSCP-5.21.8-Setup.exe",
       "installer": "winscp_installer.exe",
-      "chocolatey": "choco install winscp -y",
       "size": 10,
       "icon": "🔄"
     },
@@ -508,7 +447,6 @@
       "description": "Lightweight PDF and ebook reader",
       "url": "https://www.sumatrapdfreader.org/dl/rel/3.5.2/SumatraPDF-3.5.2-64-install.exe",
       "installer": "sumatrapdf_installer.exe",
-      "chocolatey": "choco install sumatrapdf -y",
       "size": 6,
       "icon": "📘"
     },
@@ -516,7 +454,6 @@
       "description": "PDF reader and editor",
       "url": "https://get.adobe.com/reader/",
       "installer": "acrobat_installer.exe",
-      "chocolatey": "choco install adobereader -y",
       "size": 200,
       "icon": "📄"
     },
@@ -524,7 +461,6 @@
       "description": "Cloud storage and file synchronization",
       "url": "https://www.dropbox.com/download?plat=win",
       "installer": "dropbox_installer.exe",
-      "chocolatey": "choco install dropbox -y",
       "size": 140,
       "icon": "☁️"
     },
@@ -532,7 +468,6 @@
       "description": "Google's cloud storage service",
       "url": "https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe",
       "installer": "googledrive_installer.exe",
-      "chocolatey": "choco install googledrive -y",
       "size": 80,
       "icon": "💾"
     },
@@ -540,7 +475,6 @@
       "description": "Microsoft's cloud storage service",
       "url": "https://oneclient.sfx.ms/Win/Installers/25.075.0420.0002/amd64/OneDriveSetup.exe",
       "installer": "onedrive_installer.exe",
-      "chocolatey": "choco install onedrive -y",
       "size": 100,
       "icon": "☁️"
     }
@@ -550,7 +484,6 @@
       "description": "System information and hardware monitoring",
       "url": "https://download.cpuid.com/cpu-z/cpu-z_2.05-en.exe",
       "installer": "cpuz_installer.exe",
-      "chocolatey": "choco install cpu-z -y",
       "size": 2,
       "icon": "🖥️"
     },
@@ -558,7 +491,6 @@
       "description": "Graphics card information tool",
       "url": "https://www.techpowerup.com/download/techpowerup-gpu-z/",
       "installer": "gpuz_installer.exe",
-      "chocolatey": "choco install gpu-z -y",
       "size": 8,
       "icon": "🎮"
     },
@@ -566,7 +498,6 @@
       "description": "Comprehensive hardware information tool",
       "url": "https://www.hwinfo.com/download/",
       "installer": "hwinfo_installer.exe",
-      "chocolatey": "choco install hwinfo -y",
       "size": 5,
       "icon": "🔧"
     },
@@ -574,7 +505,6 @@
       "description": "System information tool by Piriform",
       "url": "https://download.ccleaner.com/spsetup132.exe",
       "installer": "speccy_installer.exe",
-      "chocolatey": "choco install speccy -y",
       "size": 15,
       "icon": "💻"
     },
@@ -582,7 +512,6 @@
       "description": "Graphics card overclocking utility",
       "url": "https://download-2.msi.com/uti_exe/vga/MSIAfterburnerSetup.zip?__token__=exp=1748993553~acl=/*~hmac=dd7831b3b55de586d78d8745df437d32497fbd8c9e661031e118f8b305d4fb1d",
       "installer": "msiafterburner_installer.exe",
-      "chocolatey": "choco install msiafterburner -y",
       "size": 40,
       "icon": "🚀"
     },
@@ -590,7 +519,6 @@
       "description": "USB bootable drive creation tool",
       "url": "https://github.com/pbatard/rufus/releases/download/v4.1/rufus-4.1.exe",
       "installer": "rufus.exe",
-      "chocolatey": "choco install rufus -y",
       "size": 1,
       "icon": "💿"
     },
@@ -598,7 +526,8 @@
       "description": "Hard drive health monitoring tool",
       "url": "https://crystalmark.info/redirect.php?product=CrystalDiskInfo",
       "installer": "crystaldiskinfo_installer.exe",
-      "chocolatey": "choco install crystaldiskinfo -y",
-      "size": 8,Add commentMore actions
+      "size": 8,
       "icon": "💽"
     }
+  }
+}
