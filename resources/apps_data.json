@@ -262,7 +262,7 @@
     },
     "Krita": {
       "description": "Free digital painting software",
-      "url": "https://download.kde.org/stable/krita/5.2.9/krita-x64-5.2.9-setup.exe,
+      "url": "https://download.kde.org/stable/krita/5.2.9/krita-x64-5.2.9-setup.exe",
       "installer": "krita_installer.exe",
       "size": 180,
       "icon": "🖌️"
