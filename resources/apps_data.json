@@ -30,7 +30,7 @@
     },
     "Opera": {
       "description": "Feature-rich browser with built-in VPN",
-      "url": "https://download.opera.com/download/get/?id=40994&location=413&nothanks=yes&sub=marine",
+      "url": "https://www.opera.com/download",
       "installer": "opera_installer.exe",
       "size": 95,
       "icon": "🎭"
@@ -81,21 +81,21 @@
     },
     "Riot Games": {
       "description": "Launcher for Valorant, League of Legends, and other Riot titles",
-      "url": "https://download.epicgames.com/Builds/Riot/RiotClientInstalls/Riot%20Client%20Installer.exe",
+      "url": "https://riot-client.services.riotcdn.net/releases/live/installer/deploy/installer/RiotClientInstaller.exe",
       "installer": "riot_installer.exe",
       "size": 150,
       "icon": "🧨"
     },
-    "Origin": {
-      "description": "EA's gaming platform and launcher",
-      "url": "https://www.dm.origin.com/download",
-      "installer": "origin_installer.exe",
+    "EA App": {
+      "description": "EA's gaming platform and launcher (replaces Origin)",
+      "url": "https://origin-a.akamaihd.net/EA-Desktop-Client-Download/installer-releases/EAappInstaller.exe",
+      "installer": "ea_app_installer.exe",
       "size": 85,
       "icon": "🎲"
     },
     "Xbox App": {
       "description": "Microsoft's gaming app for PC Game Pass",
-      "url": "https://www.xbox.com/en-US/apps/xbox-app-for-pc",
+      "url": "https://www.microsoft.com/store/productId/9MV0B5HZVK9Z",
       "installer": "xbox_app.exe",
       "size": 140,
       "icon": "🎮"
@@ -104,21 +104,21 @@
   "Productivity": {
     "LibreOffice": {
       "description": "Free and open-source office suite",
-      "url": "https://download.documentfoundation.org/libreoffice/stable/7.6.0/win/x86_64/LibreOffice_7.6.0_Win_x64.msi",
+      "url": "https://www.libreoffice.org/download/download-libreoffice/",
       "installer": "libreoffice_installer.msi",
       "size": 300,
       "icon": "📄"
     },
     "Microsoft Office": {
       "description": "Premium office suite from Microsoft",
-      "url": "https://www.office.com/",
+      "url": "https://www.microsoft.com/en-us/microsoft-365/try",
       "installer": "office_installer.exe",
       "size": 400,
       "icon": "📊"
     },
     "Notion": {
       "description": "All-in-one workspace for notes and collaboration",
-      "url": "https://www.notion.so/desktop",
+      "url": "https://www.notion.so/desktop/windows/download",
       "installer": "notion_installer.exe",
       "size": 180,
       "icon": "📝"
@@ -234,14 +234,14 @@
     },
     "Audacity": {
       "description": "Free audio editing software",
-      "url": "https://github.com/audacity/audacity/releases/download/Audacity-3.3.3/audacity-win-3.3.3-64bit.exe",
+      "url": "https://www.audacityteam.org/download/windows/",
       "installer": "audacity_installer.exe",
       "size": 35,
       "icon": "🎵"
     },
     "GIMP": {
       "description": "Free image editing software",
-      "url": "https://download.gimp.org/mirror/pub/gimp/v2.10/windows/gimp-2.10.34-setup-3.exe",
+      "url": "https://www.gimp.org/downloads/",
       "installer": "gimp_installer.exe",
       "size": 280,
       "icon": "🎨"
@@ -255,7 +255,7 @@
     },
     "iTunes": {
       "description": "Apple's media player and library",
-      "url": "https://secure-appldnld.apple.com/itunes12/001-97787-20210421-F0E5A3C2-A2C6-11EB-A40B-A128318AD179/iTunes64Setup.exe",
+      "url": "https://www.apple.com/itunes/download/",
       "installer": "itunes_installer.exe",
       "size": 270,
       "icon": "🍎"
@@ -278,7 +278,7 @@
   "Communication": {
     "Discord": {
       "description": "Voice and text chat for communities",
-      "url": "https://stable.discordapp.com/api/download?platform=win",
+      "url": "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x64",
       "installer": "discord_installer.exe",
       "size": 85,
       "icon": "💬"
@@ -306,7 +306,7 @@
     },
     "Skype": {
       "description": "Video calling and messaging service",
-      "url": "https://download.skype.com/s4l/download/win/Skype-8.100.0.204.exe",
+      "url": "https://www.skype.com/en/get-skype/",
       "installer": "skype_installer.exe",
       "size": 90,
       "icon": "📞"
@@ -364,7 +364,7 @@
     },
     "TreeSize": {
       "description": "Disk space analyzer and cleaner",
-      "url": "https://www.jam-software.de/treesize_free/TreeSizeFree-Portable.exe",
+      "url": "https://www.jam-software.de/treesize_free/",
       "installer": "treesize_installer.exe",
       "size": 8,
       "icon": "🌳"
@@ -387,28 +387,28 @@
   "Security": {
     "Bitdefender Antivirus Free": {
       "description": "Real-time antivirus protection",
-      "url": "https://download.bitdefender.com/windows/installer/en-us/bitdefender_online.exe",
+      "url": "https://www.bitdefender.com/solutions/free.html",
       "installer": "bitdefender_installer.exe",
       "size": 29,
       "icon": "🛡️"
     },
     "Malwarebytes": {
       "description": "Anti-malware and spyware protection",
-      "url": "https://downloads.malwarebytes.com/file/mb-windows",
+      "url": "https://www.malwarebytes.com/mwb-download",
       "installer": "malwarebytes_installer.exe",
       "size": 90,
       "icon": "🧬"
     },
     "ProtonVPN": {
       "description": "Secure and free VPN service",
-      "url": "https://protonvpn.com/download/ProtonVPN_win_v3.0.1.exe",
+      "url": "https://protonvpn.com/download",
       "installer": "protonvpn_installer.exe",
       "size": 21,
       "icon": "🔒"
     },
     "NordVPN": {
       "description": "Premium VPN service with global servers",
-      "url": "https://downloads.nordcdn.com/apps/windows/NordVPN/NordVPNSetup.exe",
+      "url": "https://nordvpn.com/download/windows/",
       "installer": "nordvpn_installer.exe",
       "size": 45,
       "icon": "🔐"
@@ -422,7 +422,7 @@
     },
     "Windows Defender": {
       "description": "Built-in Windows security solution",
-      "url": "Built-in",
+      "url": "Built-in with Windows",
       "installer": "N/A",
       "size": 0,
       "icon": "🛡️"
@@ -438,7 +438,7 @@
   "File Management": {
     "FileZilla": {
       "description": "Free FTP client for file transfers",
-      "url": "https://download.filezilla-project.org/client/FileZilla_3.69.1_win64_sponsored2-setup.exe",
+      "url": "https://filezilla-project.org/download.php?type=client",
       "installer": "filezilla_installer.exe",
       "size": 12,
       "icon": "📁"
@@ -452,7 +452,7 @@
     },
     "SumatraPDF": {
       "description": "Lightweight PDF and ebook reader",
-      "url": "https://www.sumatrapdfreader.org/dl/SumatraPDF-3.5.0-64-install.exe",
+      "url": "https://www.sumatrapdfreader.org/download-free-pdf-viewer",
       "installer": "sumatrapdf_installer.exe",
       "size": 6,
       "icon": "📘"
@@ -480,7 +480,7 @@
     },
     "OneDrive": {
       "description": "Microsoft's cloud storage service",
-      "url": "https://onedrive.live.com/download",
+      "url": "https://www.microsoft.com/en-us/microsoft-365/onedrive/download",
       "installer": "onedrive_installer.exe",
       "size": 100,
       "icon": "☁️"
@@ -517,7 +517,7 @@
     },
     "MSI Afterburner": {
       "description": "Graphics card overclocking utility",
-      "url": "https://download.msi.com/uti_exe/vga/MSIAfterburnerSetup.zip",
+      "url": "https://www.msi.com/Landing/afterburner/graphics-cards",
       "installer": "msiafterburner_installer.exe",
       "size": 40,
       "icon": "🚀"
