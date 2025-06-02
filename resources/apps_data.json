@@ -438,7 +438,7 @@
   "File Management": {
     "FileZilla": {
       "description": "Free FTP client for file transfers",
-      "url": "https://download.filezilla-project.org/client/FileZilla_3.65.0_win64-setup.exe",
+      "url": "https://download.filezilla-project.org/client/FileZilla_3.69.1_win64_sponsored2-setup.exe",
       "installer": "filezilla_installer.exe",
       "size": 12,
       "icon": "📁"
