@@ -1,149 +1,172 @@
-# 🚀 Spaller - Software Package Installer
+# <img src="https://raw.githubusercontent.com/ice-exe/Spaller/refs/heads/main/images/Spaller.png" alt="Spaller Logo" width="64" height="64" align="left"> Spaller
+**Software Package Installer**
+
+<br clear="left"/>
+
+> A modern, elegant software package installer for Windows that simplifies bulk application installation with a beautiful dark-themed interface.
+
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/ice-exe/Spaller)
+[![Python](https://img.shields.io/badge/python-3.7%2B-blue.svg)](https://python.org)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)](https://github.com/ice-exe/Spaller)
+
+---
+
+## 🌟 Features
 
 <div align="center">
-
-![Spaller UI](https://raw.githubusercontent.com/ice-exe/Spaller/refs/heads/main/App%20UI.png)
-
-*A modern, elegant desktop application for installing multiple software packages with ease*
-
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![PySide6](https://img.shields.io/badge/PySide6-Qt-green?style=for-the-badge&logo=qt&logoColor=white)](https://doc.qt.io/qtforpython/)
-[![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/ice-exe/Spaller?style=for-the-badge&logo=github)](https://github.com/ice-exe/Spaller/stargazers)
-
+  <img src="https://raw.githubusercontent.com/ice-exe/Spaller/refs/heads/main/images/App%20UI.png" alt="Spaller Interface" width="800" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
 </div>
 
-## ✨ Features
+### ✨ **Modern Interface**
+- **Dark Theme**: Eye-friendly GitHub-inspired dark interface
+- **Custom Title Bar**: Frameless window with custom controls
+- **Animated Elements**: Smooth transitions and pulse animations
+- **Responsive Design**: Adapts to different screen sizes
 
-- **🎨 Modern Dark UI** - Beautiful GitHub-inspired dark theme with smooth animations
-- **📱 Frameless Design** - Custom title bar with minimize/close controls
-- **🔍 Smart Search** - Real-time search across all applications and categories
-- **📂 Category Organization** - Browse apps by categories like Browsers, Development Tools, Media, etc.
-- **🎯 Bulk Selection** - Select all apps in a category or across all categories
-- **📊 Progress Tracking** - Real-time download and installation progress with detailed status
-- **📁 Custom Download Path** - Choose where to download installers
-- **💾 Size Estimation** - See estimated download sizes before installation
-- **🔄 Multi-threaded** - Non-blocking UI with background downloads
-- **🛡️ Error Handling** - Robust error handling with user-friendly messages
+### 🎯 **Smart Installation**
+- **Bulk Install**: Select and install multiple applications simultaneously
+- **Progress Tracking**: Real-time installation progress with detailed status
+- **Category Organization**: Applications organized by type (Browsers, Gaming, Development, etc.)
+- **Search Functionality**: Quick search across all applications
+- **Size Estimation**: View estimated download sizes before installation
 
-## 🖥️ Screenshots
+### 🔧 **User-Friendly Controls**
+- **Custom Download Path**: Choose where to save installers
+- **Selective Installation**: Pick exactly what you need
+- **One-Click Actions**: Select all, deselect all, or select by category
+- **Detailed App Info**: View publisher, version, and license information
 
-### Main Interface
-The application features a clean, modern interface with:
-- **Sidebar Navigation** - Easy category browsing
-- **Application Cards** - Detailed app information with icons
-- **Progress Tracking** - Real-time installation status
-- **Smart Controls** - Intuitive selection and installation controls
+---
 
-## 🏗️ Architecture
-
-### Core Components
-
-- **`SpallerMainWindow`** - Main application window with modern UI
-- **`ModernCheckBox`** - Custom styled application selection cards
-- **`PulseButton`** - Animated buttons with visual feedback
-- **`CustomTitleBar`** - Frameless window with custom controls
-- **`LoadingScreen`** - Animated splash screen
-- **`InstallationThread`** - Multi-threaded installation process
-- **`DataLoader`** - Async data loading from remote sources
-
-### Key Features Implementation
-
-```python
-# Modern UI Components
-- Custom styled widgets with GitHub-inspired theme
-- Smooth animations and hover effects
-- Responsive layout design
-
-# Multi-threaded Architecture
-- Background data loading
-- Non-blocking installation process
-- Real-time progress updates
-
-# Smart Application Management
-- Dynamic category filtering
-- Global search functionality
-- Batch selection operations
-```
-
-## 🚀 Installation
+## 🚀 Quick Start
 
 ### Prerequisites
+- **Windows 10/11** (64-bit recommended)
+- **Python 3.7+** (if running from source)
+- **Internet Connection** (for downloading applications)
 
-- **Python 3.8+**
-- **Windows OS** (for application installations)
+### 📥 Installation
 
-### Quick Start
+#### Option 1: Download Executable (Recommended)
+1. Go to [Releases](https://github.com/ice-exe/Spaller/releases)
+2. Download the latest `Spaller.exe`
+3. Run the executable - no installation required!
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/ice-exe/Spaller.git
-   cd Spaller
-   ```
+#### Option 2: Run from Source
+```bash
+# Clone the repository
+git clone https://github.com/ice-exe/Spaller.git
+cd Spaller
 
-2. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+# Install dependencies
+pip install -r requirements.txt
 
-3. **Run the application**
-   ```bash
-   python spaller.py
-   ```
-
-### Dependencies
-
-```txt
-PySide6>=6.0.0
-requests>=2.25.0
+# Run the application
+python Spaller.py
 ```
 
-## 📝 Usage
+---
 
-### Getting Started
+## 🎮 How to Use
 
-1. **Launch Spaller** - Run the application and wait for data to load
-2. **Browse Categories** - Use the sidebar to explore different app categories
-3. **Search Applications** - Use the search bar to find specific apps
-4. **Select Applications** - Click on app cards to select them for installation
-5. **Choose Download Path** - Set where installers should be downloaded
-6. **Start Installation** - Click the "Start" button to begin batch installation
+### 1. **Launch Application**
+Run Spaller and wait for the loading screen to complete while application data loads.
 
-### Advanced Features
+### 2. **Browse Categories**
+- Navigate through different software categories in the left sidebar
+- Use the search bar to find specific applications
+- View app details by clicking the info button (ℹ)
 
-#### Bulk Operations
-- **Select All** - Select all visible applications
-- **Category Selection** - Select all apps in current category
-- **Smart Deselection** - Toggle between select/deselect modes
+### 3. **Select Applications**
+- Click on application cards to select/deselect them
+- Use "Select All" for bulk selection
+- View selected count and estimated size in the bottom panel
 
-#### Search & Filter
-- **Global Search** - Search across all categories
-- **Real-time Results** - Instant filtering as you type
-- **Description Search** - Searches both names and descriptions
+### 4. **Configure Installation**
+- Choose your download path using the "Choose Path" button
+- Default location: `~/Downloads/Spaller`
 
-#### Installation Management
-- **Progress Tracking** - See download and installation progress
-- **Error Handling** - Automatic retry and error reporting
-- **Concurrent Downloads** - Efficient multi-app processing
+### 5. **Start Installation**
+- Click the "Start" button to begin installation
+- Monitor progress in real-time
+- Applications install silently in the background
 
-## 🔧 Configuration
+---
 
-### Application Data
+## 📋 Available Applications
 
-Applications are loaded from a remote JSON source:
+### 🌐 **Web Browsers**
+- Google Chrome
+- Mozilla Firefox
+- Microsoft Edge
+- And more...
+
+### 🎮 **Gaming Platforms**
+- Steam
+- Epic Games Launcher
+- Battle.net
+- And more...
+
+### 💻 **Development Tools**
+- Visual Studio Code
+- Git
+- Python
+- And more...
+
+### 🎵 **Media & Entertainment**
+- VLC Media Player
+- Spotify
+- OBS Studio
+- And more...
+
+### 📄 **Productivity**
+- LibreOffice
+- Notepad++
+- SumatraPDF
+- And more...
+
+---
+
+## ⚙️ Technical Details
+
+### Built With
+- **Python 3.7+** - Core application logic
+- **PySide6** - Modern Qt-based GUI framework
+- **Requests** - HTTP library for downloading
+- **Threading** - Multi-threaded operations for smooth UI
+
+### Architecture
 ```
-https://raw.githubusercontent.com/ice-exe/Spaller/main/resources/apps_data.json
+Spaller/
+├── Spaller.py          # Main application file
+├── icon.ico            # Application icon
+├── requirements.txt    # Python dependencies
+└── resources/
+    └── apps_data.json  # Application database
 ```
 
-### Data Structure
+### Key Components
+- **LoadingScreen**: Animated splash screen with progress bar
+- **CustomTitleBar**: Frameless window controls
+- **ModernCheckBox**: Custom checkbox components with app info
+- **InstallationThread**: Background installation handler
+- **DataLoader**: Async application data fetching
+
+---
+
+## 🛠️ Configuration
+
+### Custom Application Data
+Applications are loaded from a JSON configuration file hosted on GitHub. The structure includes:
 
 ```json
 {
-  "category_name": {
-    "app_name": {
+  "Category Name": {
+    "App Name": {
       "description": "App description",
       "url": "download_url",
-      "installer": "installer_filename",
+      "installer": "filename.exe",
       "size": 50,
       "icon": "📦"
     }
@@ -151,70 +174,95 @@ https://raw.githubusercontent.com/ice-exe/Spaller/main/resources/apps_data.json
 }
 ```
 
-### Custom Styling
+### Adding New Applications
+To add new applications, modify the `apps_data.json` file in the repository and submit a pull request.
 
-The application uses a GitHub-inspired dark theme with:
-- **Primary Colors**: `#58a6ff` (blue), `#238636` (green)
-- **Background**: `#0d1117` (dark), `#161b22` (secondary)
-- **Text**: `#f0f6fc` (primary), `#8b949e` (secondary)
+---
 
 ## 🤝 Contributing
 
 We welcome contributions! Here's how you can help:
 
-### Ways to Contribute
+### 🐛 **Bug Reports**
+- Use the [Issues](https://github.com/ice-exe/Spaller/issues) tab
+- Include detailed steps to reproduce
+- Provide system information
 
-1. **🐛 Bug Reports** - Report issues on GitHub
-2. **💡 Feature Requests** - Suggest new features
-3. **🔧 Code Contributions** - Submit pull requests
-4. **📚 Documentation** - Improve docs and examples
-5. **🎨 UI/UX Improvements** - Enhance the user experience
+### 💡 **Feature Requests**
+- Suggest new features via Issues
+- Explain the use case and benefit
+- Consider implementation complexity
 
-### Development Setup
-
+### 🔧 **Code Contributions**
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature-name`
 3. Make your changes
 4. Test thoroughly
 5. Submit a pull request
 
-### Code Style
+### 📱 **Application Requests**
+- Request new applications via Issues
+- Provide download links and details
+- Ensure applications are freely available
 
-- Follow PEP 8 guidelines
-- Use meaningful variable names
-- Add comments for complex logic
-- Maintain consistent formatting
+---
+
+## 📞 Support & Contact
+
+### 🆘 **Getting Help**
+- **Issues**: [GitHub Issues](https://github.com/ice-exe/Spaller/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/ice-exe/Spaller/discussions)
+- **Email**: [Contact Form](https://abdvlrqhman.com/contact)
+
+### 🌐 **Stay Connected**
+- **Website**: [abdvlrqhman.com](https://abdvlrqhman.com)
+- **GitHub**: [@ice-exe](https://github.com/ice-exe)
+
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
-## 👤 Author
+### Third-Party Acknowledgments
+- **PySide6**: Qt for Python GUI framework
+- **Requests**: HTTP library for Python
+- Application installers are property of their respective owners
 
-**Ice** - *Lead Developer*
-- GitHub: [@ice-exe](https://github.com/ice-exe)
-- Website: [abdvlrqhman.com](https://abdvlrqhman.com)
+---
 
-## 🙏 Acknowledgments
+## 🎯 Roadmap
 
-- **Qt/PySide6** - For the excellent cross-platform GUI framework
-- **GitHub** - For UI/UX inspiration
-- **Contributors** - Thanks to all who have contributed to this project
+### v2.1.0 (Upcoming)
+- [ ] Update checking and auto-updater
+- [ ] Installation history and rollback
+- [ ] Custom application categories
+- [ ] Portable app support
 
-## 📊 Project Stats
+### v2.2.0 (Future)
+- [ ] Plugin system for custom installers
+- [ ] Installation scheduling
+- [ ] Multi-language support
+- [ ] Linux/macOS compatibility
 
-- **Language**: Python
-- **Framework**: PySide6 (Qt)
-- **Architecture**: Multi-threaded desktop application
-- **Platform**: Windows (primary), Cross-platform compatible
-- **Version**: 2.0.0
+---
+
+## 📊 Statistics
+
+![GitHub stars](https://img.shields.io/github/stars/ice-exe/Spaller?style=social)
+![GitHub forks](https://img.shields.io/github/forks/ice-exe/Spaller?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/ice-exe/Spaller?style=social)
 
 ---
 
 <div align="center">
+  <h3>⭐ If you find Spaller useful, please star the repository!</h3>
+  <p><strong>Made with ❤️ by Ice</strong></p>
+  <p><em>Simplifying software installation, one click at a time.</em></p>
+</div>
 
-**Made with ❤️ by Ice**
+---
 
-[⭐ Star this project](https://github.com/ice-exe/Spaller) • [🐛 Report Bug](https://github.com/ice-exe/Spaller/issues) • [💡 Request Feature](https://github.com/ice-exe/Spaller/issues)
-
+<div align="center">
+  <sub>© 2025 Ice. All rights reserved.</sub>
 </div>
