@@ -3,206 +3,538 @@
     "Google Chrome": {
       "description": "Fast, secure web browser by Google",
       "url": "https://dl.google.com/chrome/install/latest/chrome_installer.exe",
-      "installer": "chrome_installer.exe"
+      "installer": "chrome_installer.exe",
+      "size": 85,
+      "icon": "🌐"
     },
     "Mozilla Firefox": {
       "description": "Open-source web browser with privacy focus",
       "url": "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US",
-      "installer": "firefox_installer.exe"
+      "installer": "firefox_installer.exe",
+      "size": 92,
+      "icon": "🦊"
     },
     "Microsoft Edge": {
       "description": "Microsoft's modern web browser",
       "url": "https://www.microsoft.com/en-us/edge/download",
-      "installer": "edge_installer.exe"
-    }
-  },
-  "Messaging": {
-    "Discord": {
-      "description": "Voice, video and text communication platform",
-      "url": "https://discord.com/api/download?platform=win",
-      "installer": "discord_installer.exe"
+      "installer": "edge_installer.exe",
+      "size": 110,
+      "icon": "💠"
     },
-    "Telegram": {
-      "description": "Fast, secure messaging app",
-      "url": "https://telegram.org/dl/desktop/win64",
-      "installer": "telegram_installer.exe"
+    "Brave": {
+      "description": "Privacy-focused browser with ad-blocking",
+      "url": "https://laptop-updates.brave.com/latest/winx64",
+      "installer": "brave_installer.exe",
+      "size": 78,
+      "icon": "🛡️"
     },
-    "WhatsApp": {
-      "description": "Cross-platform messaging app",
-      "url": "https://www.whatsapp.com/download",
-      "installer": "whatsapp_installer.exe"
+    "Opera": {
+      "description": "Feature-rich browser with built-in VPN",
+      "url": "https://download.opera.com/download/get/?id=40994&location=413&nothanks=yes&sub=marine",
+      "installer": "opera_installer.exe",
+      "size": 95,
+      "icon": "🎭"
     },
-    "Zoom": {
-      "description": "Video conferencing and collaboration platform",
-      "url": "https://zoom.us/client/latest/ZoomInstaller.exe",
-      "installer": "zoom_installer.exe"
-    },
-    "Skype": {
-      "description": "Video and voice calls, messaging, and sharing",
-      "url": "https://go.skype.com/windows.desktop.download",
-      "installer": "skype_installer.exe"
-    }
-  },
-  "Media": {
-    "VLC Media Player": {
-      "description": "Free multimedia player and framework",
-      "url": "https://get.videolan.org/vlc/last/win64/vlc-3.0.21-win64.exe",
-      "installer": "vlc_installer.exe"
-    },
-    "Spotify": {
-      "description": "Digital music streaming service",
-      "url": "https://download.scdn.co/SpotifySetup.exe",
-      "installer": "spotify_installer.exe"
-    },
-    "OBS Studio": {
-      "description": "Free streaming and recording software",
-      "url": "https://cdn-fastly.obsproject.com/downloads/OBS-Studio-29.1.3-Full-Installer-x64.exe",
-      "installer": "obs_installer.exe"
-    },
-    "Kodi": {
-      "description": "Open-source home theater software",
-      "url": "https://mirrors.kodi.tv/releases/windows/win64/kodi-20.2-Nexus-x64.exe",
-      "installer": "kodi_installer.exe"
-    },
-    "Audacity": {
-      "description": "Free, open-source audio editor and recorder",
-      "url": "https://www.fosshub.com/Audacity.html/audacity-win-3.3.3.exe",
-      "installer": "audacity_installer.exe"
-    }
-  },
-  "Utilities": {
-    "7-Zip": {
-      "description": "File archiver with high compression ratio",
-      "url": "https://www.7-zip.org/a/7z2201-x64.exe",
-      "installer": "7zip_installer.exe"
-    },
-    "WinRAR": {
-      "description": "Powerful archive manager",
-      "url": "https://www.rarlab.com/rar/winrar-x64-611.exe",
-      "installer": "winrar_installer.exe"
-    },
-    "CCleaner": {
-      "description": "System optimization and privacy tool",
-      "url": "https://download.ccleaner.com/ccsetup602.exe",
-      "installer": "ccleaner_installer.exe"
-    },
-    "Revo Uninstaller": {
-      "description": "Advanced uninstaller for removing programs",
-      "url": "https://www.revouninstaller.com/download-free-portable/",
-      "installer": "revo_installer.exe"
-    },
-    "Everything": {
-      "description": "Ultra-fast file search tool",
-      "url": "https://www.voidtools.com/Everything-1.4.1.1009.x64-Setup.exe",
-      "installer": "everything_installer.exe"
-    }
-  },
-  "Development": {
-    "Visual Studio Code": {
-      "description": "Lightweight code editor by Microsoft",
-      "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user",
-      "installer": "vscode_installer.exe"
-    },
-    "Git": {
-      "description": "Distributed version control system",
-      "url": "https://github.com/git-for-windows/git/releases/download/v2.42.0.windows.2/Git-2.42.0.2-64-bit.exe",
-      "installer": "git_installer.exe"
-    },
-    "Python": {
-      "description": "High-level programming language",
-      "url": "https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe",
-      "installer": "python_installer.exe"
-    },
-    "Node.js": {
-      "description": "JavaScript runtime built on Chrome's V8 engine",
-      "url": "https://nodejs.org/dist/v20.5.1/node-v20.5.1-x64.msi",
-      "installer": "nodejs_installer.msi"
-    },
-    "Docker Desktop": {
-      "description": "Containerization platform for developers",
-      "url": "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe",
-      "installer": "docker_installer.exe"
+    "Vivaldi": {
+      "description": "Highly customizable browser for power users",
+      "url": "https://downloads.vivaldi.com/stable/Vivaldi.6.2.3105.48.x64.exe",
+      "installer": "vivaldi_installer.exe",
+      "size": 88,
+      "icon": "🎨"
     }
   },
   "Gaming": {
     "Steam": {
       "description": "Digital distribution platform for games",
-      "url": "https://cdn.akamai.steamstatic.com/client/installer/SteamSetup.exe",
-      "installer": "steam_installer.exe"
-    },
-    "Epic Games Launcher": {
-      "description": "Digital storefront for Epic Games",
-      "url": "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi",
-      "installer": "epic_installer.msi"
+      "url": "https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe",
+      "installer": "SteamSetup.exe",
+      "size": 156,
+      "icon": "🎮"
     },
     "Battle.net": {
       "description": "Blizzard's gaming platform",
-      "url": "https://www.battle.net/download/getInstallerForGame?os=win&gameProgram=BATTLENET_APP&version=Live",
-      "installer": "battlenet_installer.exe"
+      "url": "https://www.battle.net/download/getInstallerForGame?os=win&locale=enUS&version=LIVE&gameProgram=BATTLENET_APP",
+      "installer": "Battle.net-Setup.exe",
+      "size": 67,
+      "icon": "⚔️"
+    },
+    "Epic Games Launcher": {
+      "description": "Launcher for Fortnite and other Epic titles",
+      "url": "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi",
+      "installer": "epic_installer.msi",
+      "size": 160,
+      "icon": "🕹️"
     },
     "GOG Galaxy": {
-      "description": "DRM-free game platform by GOG",
+      "description": "DRM-free game launcher from GOG",
       "url": "https://webinstallers.gog-statics.com/download/GOG_Galaxy_2.0.exe",
-      "installer": "gog_installer.exe"
+      "installer": "gog_installer.exe",
+      "size": 120,
+      "icon": "🚀"
     },
     "Ubisoft Connect": {
       "description": "Ubisoft's game launcher and store",
       "url": "https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UbisoftConnectInstaller.exe",
-      "installer": "ubisoft_installer.exe"
+      "installer": "ubisoft_installer.exe",
+      "size": 100,
+      "icon": "🎯"
+    },
+    "Riot Games": {
+      "description": "Launcher for Valorant, League of Legends, and other Riot titles",
+      "url": "https://download.epicgames.com/Builds/Riot/RiotClientInstalls/Riot%20Client%20Installer.exe",
+      "installer": "riot_installer.exe",
+      "size": 150,
+      "icon": "🧨"
+    },
+    "Origin": {
+      "description": "EA's gaming platform and launcher",
+      "url": "https://www.dm.origin.com/download",
+      "installer": "origin_installer.exe",
+      "size": 85,
+      "icon": "🎲"
+    },
+    "Xbox App": {
+      "description": "Microsoft's gaming app for PC Game Pass",
+      "url": "https://www.xbox.com/en-US/apps/xbox-app-for-pc",
+      "installer": "xbox_app.exe",
+      "size": 140,
+      "icon": "🎮"
     }
   },
   "Productivity": {
     "LibreOffice": {
       "description": "Free and open-source office suite",
       "url": "https://download.documentfoundation.org/libreoffice/stable/7.6.0/win/x86_64/LibreOffice_7.6.0_Win_x64.msi",
-      "installer": "libreoffice_installer.msi"
+      "installer": "libreoffice_installer.msi",
+      "size": 300,
+      "icon": "📄"
     },
-    "Foxit PDF Reader": {
-      "description": "Lightweight PDF reader and editor",
-      "url": "https://cdn01.foxitsoftware.com/product/reader/desktop/win/12.1.0/FoxitPDFReader1210_L10N_Setup_Prom.exe",
-      "installer": "foxit_installer.exe"
+    "Microsoft Office": {
+      "description": "Premium office suite from Microsoft",
+      "url": "https://www.office.com/",
+      "installer": "office_installer.exe",
+      "size": 400,
+      "icon": "📊"
+    },
+    "Notion": {
+      "description": "All-in-one workspace for notes and collaboration",
+      "url": "https://www.notion.so/desktop",
+      "installer": "notion_installer.exe",
+      "size": 180,
+      "icon": "📝"
+    },
+    "Obsidian": {
+      "description": "Knowledge management and note-taking app",
+      "url": "https://obsidian.md/download",
+      "installer": "obsidian_installer.exe",
+      "size": 120,
+      "icon": "🧠"
+    },
+    "Todoist": {
+      "description": "Task management and productivity app",
+      "url": "https://todoist.com/downloads/windows",
+      "installer": "todoist_installer.exe",
+      "size": 80,
+      "icon": "✅"
+    },
+    "Trello": {
+      "description": "Visual project management tool",
+      "url": "https://trello.com/platforms",
+      "installer": "trello_installer.exe",
+      "size": 75,
+      "icon": "📋"
+    },
+    "Evernote": {
+      "description": "Note-taking and organization app",
+      "url": "https://evernote.com/download",
+      "installer": "evernote_installer.exe",
+      "size": 200,
+      "icon": "🐘"
+    },
+    "OneNote": {
+      "description": "Microsoft's digital note-taking app",
+      "url": "https://www.onenote.com/download",
+      "installer": "onenote_installer.exe",
+      "size": 150,
+      "icon": "📓"
+    }
+  },
+  "Development": {
+    "Visual Studio Code": {
+      "description": "Lightweight code editor with extensions",
+      "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user",
+      "installer": "vscode_installer.exe",
+      "size": 85,
+      "icon": "💻"
     },
     "Notepad++": {
-      "description": "Advanced text editor for coding",
+      "description": "Advanced text editor for developers",
       "url": "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.4/npp.8.5.4.Installer.x64.exe",
-      "installer": "notepadpp_installer.exe"
+      "installer": "notepadpp_installer.exe",
+      "size": 10,
+      "icon": "🗒️"
     },
-    "SumatraPDF": {
-      "description": "Lightweight PDF, eBook, and comic reader",
-      "url": "https://www.sumatrapdfreader.org/dl/SumatraPDF-3.5.0-64-install.exe",
-      "installer": "sumatrapdf_installer.exe"
+    "Git": {
+      "description": "Version control system for developers",
+      "url": "https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/Git-2.41.0.3-64-bit.exe",
+      "installer": "git_installer.exe",
+      "size": 50,
+      "icon": "🌿"
     },
-    "Microsoft PowerToys": {
-      "description": "Utilities to enhance Windows productivity",
-      "url": "https://github.com/microsoft/PowerToys/releases/download/v0.73.0/PowerToysSetup-0.73.0-x64.exe",
-      "installer": "powertoys_installer.exe"
+    "Node.js": {
+      "description": "JavaScript runtime for server-side development",
+      "url": "https://nodejs.org/dist/v18.17.0/node-v18.17.0-x64.msi",
+      "installer": "nodejs_installer.msi",
+      "size": 25,
+      "icon": "🟢"
+    },
+    "Python": {
+      "description": "Popular programming language interpreter",
+      "url": "https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe",
+      "installer": "python_installer.exe",
+      "size": 30,
+      "icon": "🐍"
+    },
+    "IntelliJ IDEA": {
+      "description": "Powerful IDE for Java development",
+      "url": "https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows",
+      "installer": "intellij_installer.exe",
+      "size": 800,
+      "icon": "🧠"
+    },
+    "Docker Desktop": {
+      "description": "Containerization platform for developers",
+      "url": "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe",
+      "installer": "docker_installer.exe",
+      "size": 500,
+      "icon": "🐳"
+    },
+    "Postman": {
+      "description": "API development and testing tool",
+      "url": "https://dl.pstmn.io/download/latest/win64",
+      "installer": "postman_installer.exe",
+      "size": 150,
+      "icon": "📮"
+    }
+  },
+  "Media": {
+    "VLC Media Player": {
+      "description": "Versatile media player for all formats",
+      "url": "https://download.videolan.org/pub/videolan/vlc/3.0.18/win64/vlc-3.0.18-win64.exe",
+      "installer": "vlc_installer.exe",
+      "size": 40,
+      "icon": "🎬"
+    },
+    "OBS Studio": {
+      "description": "Free streaming and recording software",
+      "url": "https://cdn-fastly.obsproject.com/downloads/OBS-Studio-29.1.3-Full-Installer-x64.exe",
+      "installer": "obs_installer.exe",
+      "size": 120,
+      "icon": "📹"
+    },
+    "Audacity": {
+      "description": "Free audio editing software",
+      "url": "https://github.com/audacity/audacity/releases/download/Audacity-3.3.3/audacity-win-3.3.3-64bit.exe",
+      "installer": "audacity_installer.exe",
+      "size": 35,
+      "icon": "🎵"
+    },
+    "GIMP": {
+      "description": "Free image editing software",
+      "url": "https://download.gimp.org/mirror/pub/gimp/v2.10/windows/gimp-2.10.34-setup-3.exe",
+      "installer": "gimp_installer.exe",
+      "size": 280,
+      "icon": "🎨"
+    },
+    "Spotify": {
+      "description": "Music streaming service",
+      "url": "https://download.scdn.co/SpotifySetup.exe",
+      "installer": "spotify_installer.exe",
+      "size": 95,
+      "icon": "🎧"
+    },
+    "iTunes": {
+      "description": "Apple's media player and library",
+      "url": "https://secure-appldnld.apple.com/itunes12/001-97787-20210421-F0E5A3C2-A2C6-11EB-A40B-A128318AD179/iTunes64Setup.exe",
+      "installer": "itunes_installer.exe",
+      "size": 270,
+      "icon": "🍎"
+    },
+    "Krita": {
+      "description": "Free digital painting software",
+      "url": "https://download.kde.org/stable/krita/5.1.5/krita-x64-5.1.5-setup.exe",
+      "installer": "krita_installer.exe",
+      "size": 180,
+      "icon": "🖌️"
+    },
+    "HandBrake": {
+      "description": "Video transcoder and converter",
+      "url": "https://github.com/HandBrake/HandBrake/releases/download/1.6.1/HandBrake-1.6.1-x86_64-Win_GUI.exe",
+      "installer": "handbrake_installer.exe",
+      "size": 15,
+      "icon": "🎞️"
+    }
+  },
+  "Communication": {
+    "Discord": {
+      "description": "Voice and text chat for communities",
+      "url": "https://stable.discordapp.com/api/download?platform=win",
+      "installer": "discord_installer.exe",
+      "size": 85,
+      "icon": "💬"
+    },
+    "Zoom": {
+      "description": "Video conferencing and meetings",
+      "url": "https://zoom.us/client/latest/ZoomInstaller.exe",
+      "installer": "zoom_installer.exe",
+      "size": 45,
+      "icon": "📹"
+    },
+    "Microsoft Teams": {
+      "description": "Collaboration and communication platform",
+      "url": "https://teams.microsoft.com/downloads/desktopurl?env=production&plat=windows&arch=x64&managedInstaller=true&download=true",
+      "installer": "teams_installer.exe",
+      "size": 120,
+      "icon": "👥"
+    },
+    "Slack": {
+      "description": "Workplace communication tool",
+      "url": "https://downloads.slack-edge.com/releases/windows/4.33.90/prod/x64/SlackSetup.exe",
+      "installer": "slack_installer.exe",
+      "size": 110,
+      "icon": "💼"
+    },
+    "Skype": {
+      "description": "Video calling and messaging service",
+      "url": "https://download.skype.com/s4l/download/win/Skype-8.100.0.204.exe",
+      "installer": "skype_installer.exe",
+      "size": 90,
+      "icon": "📞"
+    },
+    "Telegram": {
+      "description": "Fast and secure messaging app",
+      "url": "https://telegram.org/dl/desktop/win64",
+      "installer": "telegram_installer.exe",
+      "size": 35,
+      "icon": "✈️"
+    },
+    "WhatsApp": {
+      "description": "Popular messaging app for desktop",
+      "url": "https://web.whatsapp.com/desktop/windows/release/x64/WhatsAppSetup.exe",
+      "installer": "whatsapp_installer.exe",
+      "size": 150,
+      "icon": "💚"
+    }
+  },
+  "Utilities": {
+    "7-Zip": {
+      "description": "High-compression file archiver",
+      "url": "https://www.7-zip.org/a/7z2201-x64.exe",
+      "installer": "7zip_installer.exe",
+      "size": 2,
+      "icon": "🗜️"
+    },
+    "WinRAR": {
+      "description": "File archiver utility for Windows",
+      "url": "https://www.rarlab.com/rar/winrar-x64-611.exe",
+      "installer": "winrar_installer.exe",
+      "size": 3,
+      "icon": "📦"
+    },
+    "CCleaner": {
+      "description": "System cleaning and optimization tool",
+      "url": "https://download.ccleaner.com/ccsetup602.exe",
+      "installer": "ccleaner_installer.exe",
+      "size": 25,
+      "icon": "🧹"
+    },
+    "Everything": {
+      "description": "Instant file and folder search utility",
+      "url": "https://www.voidtools.com/Everything-1.4.1.1024.x64-Setup.exe",
+      "installer": "everything_installer.exe",
+      "size": 3,
+      "icon": "🔍"
+    },
+    "PowerToys": {
+      "description": "Microsoft utilities for power users",
+      "url": "https://github.com/microsoft/PowerToys/releases/download/v0.72.0/PowerToysSetup-0.72.0-x64.exe",
+      "installer": "powertoys_installer.exe",
+      "size": 250,
+      "icon": "⚡"
+    },
+    "TreeSize": {
+      "description": "Disk space analyzer and cleaner",
+      "url": "https://www.jam-software.de/treesize_free/TreeSizeFree-Portable.exe",
+      "installer": "treesize_installer.exe",
+      "size": 8,
+      "icon": "🌳"
+    },
+    "Greenshot": {
+      "description": "Screenshot tool with annotation features",
+      "url": "https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot-INSTALLER-1.2.10.6-RELEASE.exe",
+      "installer": "greenshot_installer.exe",
+      "size": 2,
+      "icon": "📸"
+    },
+    "Process Hacker": {
+      "description": "Advanced system monitor and process manager",
+      "url": "https://processhacker.sourceforge.io/downloads.php",
+      "installer": "processhacker_installer.exe",
+      "size": 5,
+      "icon": "⚙️"
     }
   },
   "Security": {
     "Bitdefender Antivirus Free": {
-      "description": "Free antivirus solution with real-time protection",
+      "description": "Real-time antivirus protection",
       "url": "https://download.bitdefender.com/windows/installer/en-us/bitdefender_online.exe",
-      "installer": "bitdefender_installer.exe"
+      "installer": "bitdefender_installer.exe",
+      "size": 29,
+      "icon": "🛡️"
     },
     "Malwarebytes": {
-      "description": "Malware and spyware removal tool",
+      "description": "Anti-malware and spyware protection",
       "url": "https://downloads.malwarebytes.com/file/mb-windows",
-      "installer": "malwarebytes_installer.exe"
+      "installer": "malwarebytes_installer.exe",
+      "size": 90,
+      "icon": "🧬"
     },
     "ProtonVPN": {
       "description": "Secure and free VPN service",
       "url": "https://protonvpn.com/download/ProtonVPN_win_v3.0.1.exe",
-      "installer": "protonvpn_installer.exe"
+      "installer": "protonvpn_installer.exe",
+      "size": 21,
+      "icon": "🔒"
     },
-    "KeePass": {
+    "NordVPN": {
+      "description": "Premium VPN service with global servers",
+      "url": "https://downloads.nordcdn.com/apps/windows/NordVPN/NordVPNSetup.exe",
+      "installer": "nordvpn_installer.exe",
+      "size": 45,
+      "icon": "🔐"
+    },
+    "Bitwarden": {
       "description": "Open-source password manager",
-      "url": "https://downloads.sourceforge.net/project/keepass/KeePass%202.x/2.55/KeePass-2.55-Setup.exe",
-      "installer": "keepass_installer.exe"
+      "url": "https://vault.bitwarden.com/download/?app=desktop&platform=windows",
+      "installer": "bitwarden_installer.exe",
+      "size": 85,
+      "icon": "🔑"
     },
-    "GlassWire": {
-      "description": "Network monitoring and security tool",
-      "url": "https://download.glasswire.com/GlassWireSetup.exe",
-      "installer": "glasswire_installer.exe"
+    "Windows Defender": {
+      "description": "Built-in Windows security solution",
+      "url": "Built-in",
+      "installer": "N/A",
+      "size": 0,
+      "icon": "🛡️"
+    },
+    "VeraCrypt": {
+      "description": "Disk encryption software",
+      "url": "https://launchpad.net/veracrypt/trunk/1.25.9/+download/VeraCrypt%20Setup%201.25.9.exe",
+      "installer": "veracrypt_installer.exe",
+      "size": 25,
+      "icon": "🔐"
+    }
+  },
+  "File Management": {
+    "FileZilla": {
+      "description": "Free FTP client for file transfers",
+      "url": "https://download.filezilla-project.org/client/FileZilla_3.65.0_win64-setup.exe",
+      "installer": "filezilla_installer.exe",
+      "size": 12,
+      "icon": "📁"
+    },
+    "WinSCP": {
+      "description": "SFTP and FTP client for Windows",
+      "url": "https://winscp.net/download/WinSCP-5.21.8-Setup.exe",
+      "installer": "winscp_installer.exe",
+      "size": 10,
+      "icon": "🔄"
+    },
+    "SumatraPDF": {
+      "description": "Lightweight PDF and ebook reader",
+      "url": "https://www.sumatrapdfreader.org/dl/SumatraPDF-3.5.0-64-install.exe",
+      "installer": "sumatrapdf_installer.exe",
+      "size": 6,
+      "icon": "📘"
+    },
+    "Adobe Acrobat Reader": {
+      "description": "PDF reader and editor",
+      "url": "https://get.adobe.com/reader/",
+      "installer": "acrobat_installer.exe",
+      "size": 200,
+      "icon": "📄"
+    },
+    "Dropbox": {
+      "description": "Cloud storage and file synchronization",
+      "url": "https://www.dropbox.com/download?plat=win",
+      "installer": "dropbox_installer.exe",
+      "size": 140,
+      "icon": "☁️"
+    },
+    "Google Drive": {
+      "description": "Google's cloud storage service",
+      "url": "https://dl.google.com/drive-file-stream/GoogleDriveSetup.exe",
+      "installer": "googledrive_installer.exe",
+      "size": 80,
+      "icon": "💾"
+    },
+    "OneDrive": {
+      "description": "Microsoft's cloud storage service",
+      "url": "https://onedrive.live.com/download",
+      "installer": "onedrive_installer.exe",
+      "size": 100,
+      "icon": "☁️"
+    }
+  },
+  "System Tools": {
+    "CPU-Z": {
+      "description": "System information and hardware monitoring",
+      "url": "https://download.cpuid.com/cpu-z/cpu-z_2.05-en.exe",
+      "installer": "cpuz_installer.exe",
+      "size": 2,
+      "icon": "🖥️"
+    },
+    "GPU-Z": {
+      "description": "Graphics card information tool",
+      "url": "https://www.techpowerup.com/download/techpowerup-gpu-z/",
+      "installer": "gpuz_installer.exe",
+      "size": 8,
+      "icon": "🎮"
+    },
+    "HWiNFO": {
+      "description": "Comprehensive hardware information tool",
+      "url": "https://www.hwinfo.com/download/",
+      "installer": "hwinfo_installer.exe",
+      "size": 5,
+      "icon": "🔧"
+    },
+    "Speccy": {
+      "description": "System information tool by Piriform",
+      "url": "https://download.ccleaner.com/spsetup132.exe",
+      "installer": "speccy_installer.exe",
+      "size": 15,
+      "icon": "💻"
+    },
+    "MSI Afterburner": {
+      "description": "Graphics card overclocking utility",
+      "url": "https://download.msi.com/uti_exe/vga/MSIAfterburnerSetup.zip",
+      "installer": "msiafterburner_installer.exe",
+      "size": 40,
+      "icon": "🚀"
+    },
+    "Rufus": {
+      "description": "USB bootable drive creation tool",
+      "url": "https://github.com/pbatard/rufus/releases/download/v4.1/rufus-4.1.exe",
+      "installer": "rufus.exe",
+      "size": 1,
+      "icon": "💿"
+    },
+    "CrystalDiskInfo": {
+      "description": "Hard drive health monitoring tool",
+      "url": "https://crystalmark.info/redirect.php?product=CrystalDiskInfo",
+      "installer": "crystaldiskinfo_installer.exe",
+      "size": 8,
+      "icon": "💽"
     }
   }
 }
