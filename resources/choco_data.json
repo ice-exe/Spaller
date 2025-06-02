@@ -1,0 +1,460 @@
+{
+  "Browsers": {
+    "Google Chrome": {
+      "description": "Fast, secure web browser by Google",
+      "chocolatey": "choco install googlechrome -y",
+      "size": 85,
+      "icon": "🌐"
+    },
+    "Mozilla Firefox": {
+      "description": "Open-source web browser with privacy focus",
+      "chocolatey": "choco install firefox -y",
+      "size": 92,
+      "icon": "🦊"
+    },
+    "Microsoft Edge": {
+      "description": "Microsoft's modern web browser",
+      "chocolatey": "choco install microsoft-edge -y",
+      "size": 110,
+      "icon": "💠"
+    },
+    "Brave": {
+      "description": "Privacy-focused browser with ad-blocking",
+      "chocolatey": "choco install brave -y",
+      "size": 78,
+      "icon": "🛡️"
+    },
+    "Opera": {
+      "description": "Feature-rich browser with built-in VPN",
+      "chocolatey": "choco install opera -y",
+      "size": 95,
+      "icon": "🎭"
+    },
+    "Vivaldi": {
+      "description": "Highly customizable browser for power users",
+      "chocolatey": "choco install vivaldi -y",
+      "size": 88,
+      "icon": "🎨"
+    }
+  },
+  "Gaming": {
+    "Steam": {
+      "description": "Digital distribution platform for games",
+      "chocolatey": "choco install steam -y",
+      "size": 156,
+      "icon": "🎮"
+    },
+    "Battle.net": {
+      "description": "Blizzard's gaming platform",
+      "chocolatey": "choco install battle.net -y",
+      "size": 67,
+      "icon": "⚔️"
+    },
+    "Epic Games Launcher": {
+      "description": "Launcher for Fortnite and other Epic titles",
+      "chocolatey": "choco install epicgameslauncher -y",
+      "size": 160,
+      "icon": "🕹️"
+    },
+    "GOG Galaxy": {
+      "description": "DRM-free game launcher from GOG",
+      "chocolatey": "choco install goggalaxy -y",
+      "size": 120,
+      "icon": "🚀"
+    },
+    "Ubisoft Connect": {
+      "description": "Ubisoft's game launcher and store",
+      "chocolatey": "choco install ubisoft-connect -y",
+      "size": 100,
+      "icon": "🎯"
+    },
+    "Riot Games": {
+      "description": "Launcher for Valorant, League of Legends, and other Riot titles",
+      "chocolatey": "choco install riot-games -y",
+      "size": 150,
+      "icon": "🧨"
+    },
+    "EA App": {
+      "description": "EA's gaming platform and launcher (replaces Origin)",
+      "chocolatey": "choco install ea-app -y",
+      "size": 85,
+      "icon": "🎲"
+    },
+    "Xbox App": {
+      "description": "Microsoft's gaming app for PC Game Pass",
+      "chocolatey": "choco install xbox-app -y",
+      "size": 140,
+      "icon": "🎮"
+    }
+  },
+  "Productivity": {
+    "LibreOffice": {
+      "description": "Free and open-source office suite",
+      "chocolatey": "choco install libreoffice-fresh -y",
+      "size": 300,
+      "icon": "📄"
+    },
+    "Microsoft Office": {
+      "description": "Premium office suite from Microsoft",
+      "chocolatey": "choco install office365business -y",
+      "size": 400,
+      "icon": "📊"
+    },
+    "Notion": {
+      "description": "All-in-one workspace for notes and collaboration",
+      "chocolatey": "choco install notion -y",
+      "size": 180,
+      "icon": "📝"
+    },
+    "Obsidian": {
+      "description": "Knowledge management and note-taking app",
+      "chocolatey": "choco install obsidian -y",
+      "size": 120,
+      "icon": "🧠"
+    },
+    "Todoist": {
+      "description": "Task management and productivity app",
+      "chocolatey": "choco install todoist -y",
+      "size": 80,
+      "icon": "✅"
+    },
+    "Trello": {
+      "description": "Visual project management tool",
+      "chocolatey": "choco install trello -y",
+      "size": 75,
+      "icon": "📋"
+    },
+    "Evernote": {
+      "description": "Note-taking and organization app",
+      "chocolatey": "choco install evernote -y",
+      "size": 200,
+      "icon": "🐘"
+    },
+    "OneNote": {
+      "description": "Microsoft's digital note-taking app",
+      "chocolatey": "choco install onenote -y",
+      "size": 150,
+      "icon": "📓"
+    }
+  },
+  "Development": {
+    "Visual Studio Code": {
+      "description": "Lightweight code editor with extensions",
+      "chocolatey": "choco install vscode -y",
+      "size": 85,
+      "icon": "💻"
+    },
+    "Notepad++": {
+      "description": "Advanced text editor for developers",
+      "chocolatey": "choco install notepadplusplus -y",
+      "size": 10,
+      "icon": "🗒️"
+    },
+    "Git": {
+      "description": "Version control system for developers",
+      "chocolatey": "choco install git -y",
+      "size": 50,
+      "icon": "🌿"
+    },
+    "Node.js": {
+      "description": "JavaScript runtime for server-side development",
+      "chocolatey": "choco install nodejs -y",
+      "size": 25,
+      "icon": "🟢"
+    },
+    "Python": {
+      "description": "Popular programming language interpreter",
+      "chocolatey": "choco install python -y",
+      "size": 30,
+      "icon": "🐍"
+    },
+    "IntelliJ IDEA": {
+      "description": "Powerful IDE for Java development",
+      "chocolatey": "choco install intellijidea-community -y",
+      "size": 800,
+      "icon": "🧠"
+    },
+    "Docker Desktop": {
+      "description": "Containerization platform for developers",
+      "chocolatey": "choco install docker-desktop -y",
+      "size": 500,
+      "icon": "🐳"
+    },
+    "Postman": {
+      "description": "API development and testing tool",
+      "chocolatey": "choco install postman -y",
+      "size": 150,
+      "icon": "📮"
+    }
+  },
+  "Media": {
+    "VLC Media Player": {
+      "description": "Versatile media player for all formats",
+      "chocolatey": "choco install vlc -y",
+      "size": 40,
+      "icon": "🎬"
+    },
+    "OBS Studio": {
+      "description": "Free streaming and recording software",
+      "chocolatey": "choco install obs-studio -y",
+      "size": 120,
+      "icon": "📹"
+    },
+    "Audacity": {
+      "description": "Free audio editing software",
+      "chocolatey": "choco install audacity -y",
+      "size": 35,
+      "icon": "🎵"
+    },
+    "GIMP": {
+      "description": "Free image editing software",
+      "chocolatey": "choco install gimp -y",
+      "size": 280,
+      "icon": "🎨"
+    },
+    "Spotify": {
+      "description": "Music streaming service",
+      "chocolatey": "choco install spotify -y",
+      "size": 95,
+      "icon": "🎧"
+    },
+    "iTunes": {
+      "description": "Apple's media player and library",
+      "chocolatey": "choco install itunes -y",
+      "size": 270,
+      "icon": "🍎"
+    },
+    "Krita": {
+      "description": "Free digital painting software",
+      "chocolatey": "choco install krita -y",
+      "size": 180,
+      "icon": "🖌️"
+    },
+    "HandBrake": {
+      "description": "Video transcoder and converter",
+      "chocolatey": "choco install handbrake -y",
+      "size": 15,
+      "icon": "🎞️"
+    }
+  },
+  "Communication": {
+    "Discord": {
+      "description": "Voice and text chat for communities",
+      "chocolatey": "choco install discord -y",
+      "size": 85,
+      "icon": "💬"
+    },
+    "Zoom": {
+      "description": "Video conferencing and meetings",
+      "chocolatey": "choco install zoom -y",
+      "size": 45,
+      "icon": "📹"
+    },
+    "Microsoft Teams": {
+      "description": "Collaboration and communication platform",
+      "chocolatey": "choco install microsoft-teams -y",
+      "size": 120,
+      "icon": "👥"
+    },
+    "Slack": {
+      "description": "Workplace communication tool",
+      "chocolatey": "choco install slack -y",
+      "size": 110,
+      "icon": "💼"
+    },
+    "Telegram": {
+      "description": "Fast and secure messaging app",
+      "chocolatey": "choco install telegram -y",
+      "size": 35,
+      "icon": "✈️"
+    },
+    "WhatsApp": {
+      "description": "Popular messaging app for desktop",
+      "chocolatey": "choco install whatsapp -y",
+      "size": 150,
+      "icon": "💚"
+    }
+  },
+  "Utilities": {
+    "7-Zip": {
+      "description": "High-compression file archiver",
+      "chocolatey": "choco install 7zip -y",
+      "size": 2,
+      "icon": "🗜️"
+    },
+    "WinRAR": {
+      "description": "File archiver utility for Windows",
+      "chocolatey": "choco install winrar -y",
+      "size": 3,
+      "icon": "📦"
+    },
+    "CCleaner": {
+      "description": "System cleaning and optimization tool",
+      "chocolatey": "choco install ccleaner -y",
+      "size": 25,
+      "icon": "🧹"
+    },
+    "Everything": {
+      "description": "Instant file and folder search utility",
+      "chocolatey": "choco install everything -y",
+      "size": 3,
+      "icon": "🔍"
+    },
+    "PowerToys": {
+      "description": "Microsoft utilities for power users",
+      "chocolatey": "choco install powertoys -y",
+      "size": 250,
+      "icon": "⚡"
+    },
+    "TreeSize": {
+      "description": "Disk space analyzer and cleaner",
+      "chocolatey": "choco install treesize-free -y",
+      "size": 8,
+      "icon": "🌳"
+    },
+    "Greenshot": {
+      "description": "Screenshot tool with annotation features",
+      "chocolatey": "choco install greenshot -y",
+      "size": 2,
+      "icon": "📸"
+    },
+    "Process Hacker": {
+      "description": "Advanced system monitor and process manager",
+      "chocolatey": "choco install processhacker -y",
+      "size": 5,
+      "icon": "⚙️"
+    }
+  },
+  "Security": {
+    "Bitdefender Antivirus Free": {
+      "description": "Real-time antivirus protection",
+      "chocolatey": "choco install bitdefender-antivirus-free -y",
+      "size": 29,
+      "icon": "🛡️"
+    },
+    "Malwarebytes": {
+      "description": "Anti-malware and spyware protection",
+      "chocolatey": "choco install malwarebytes -y",
+      "size": 90,
+      "icon": "🧬"
+    },
+    "ProtonVPN": {
+      "description": "Secure and free VPN service",
+      "chocolatey": "choco install protonvpn -y",
+      "size": 21,
+      "icon": "🔒"
+    },
+    "NordVPN": {
+      "description": "Premium VPN service with global servers",
+      "chocolatey": "choco install nordvpn -y",
+      "size": 45,
+      "icon": "🔐"
+    },
+    "Bitwarden": {
+      "description": "Open-source password manager",
+      "chocolatey": "choco install bitwarden -y",
+      "size": 85,
+      "icon": "🔑"
+    },
+    "Windows Defender": {
+      "description": "Built-in Windows security solution",
+      "chocolatey": "Built-in with Windows",
+      "size": 0,
+      "icon": "🛡️"
+    },
+    "VeraCrypt": {
+      "description": "Disk encryption software",
+      "chocolatey": "choco install veracrypt -y",
+      "size": 25,
+      "icon": "🔐"
+    }
+  },
+  "File Management": {
+    "FileZilla": {
+      "description": "Free FTP client for file transfers",
+      "chocolatey": "choco install filezilla -y",
+      "size": 12,
+      "icon": "📁"
+    },
+    "WinSCP": {
+      "description": "SFTP and FTP client for Windows",
+      "chocolatey": "choco install winscp -y",
+      "size": 10,
+      "icon": "🔄"
+    },
+    "SumatraPDF": {
+      "description": "Lightweight PDF and ebook reader",
+      "chocolatey": "choco install sumatrapdf -y",
+      "size": 6,
+      "icon": "📘"
+    },
+    "Adobe Acrobat Reader": {
+      "description": "PDF reader and editor",
+      "chocolatey": "choco install adobereader -y",
+      "size": 200,
+      "icon": "📄"
+    },
+    "Dropbox": {
+      "description": "Cloud storage and file synchronization",
+      "chocolatey": "choco install dropbox -y",
+      "size": 140,
+      "icon": "☁️"
+    },
+    "Google Drive": {
+      "description": "Google's cloud storage service",
+      "chocolatey": "choco install googledrive -y",
+      "size": 80,
+      "icon": "💾"
+    },
+    "OneDrive": {
+      "description": "Microsoft's cloud storage service",
+      "chocolatey": "choco install onedrive -y",
+      "size": 100,
+      "icon": "☁️"
+    }
+  },
+  "System Tools": {
+    "CPU-Z": {
+      "description": "System information and hardware monitoring",
+      "chocolatey": "choco install cpu-z -y",
+      "size": 2,
+      "icon": "🖥️"
+    },
+    "GPU-Z": {
+      "description": "Graphics card information tool",
+      "chocolatey": "choco install gpu-z -y",
+      "size": 8,
+      "icon": "🎮"
+    },
+    "HWiNFO": {
+      "description": "Comprehensive hardware information tool",
+      "chocolatey": "choco install hwinfo -y",
+      "size": 5,
+      "icon": "🔧"
+    },
+    "Speccy": {
+      "description": "System information tool by Piriform",
+      "chocolatey": "choco install speccy -y",
+      "size": 15,
+      "icon": "💻"
+    },
+    "MSI Afterburner": {
+      "description": "Graphics card overclocking utility",
+      "chocolatey": "choco install msiafterburner -y",
+      "size": 40,
+      "icon": "🚀"
+    },
+    "Rufus": {
+      "description": "USB bootable drive creation tool",
+      "chocolatey": "choco install rufus -y",
+      "size": 1,
+      "icon": "💿"
+    },
+    "CrystalDiskInfo": {
+      "description": "Hard drive health monitoring tool",
+      "chocolatey": "choco install crystaldiskinfo -y",
+      "size": 8,
+      "icon": "💽"
+    }
+  }
+}
