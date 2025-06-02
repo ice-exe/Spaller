@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/ice-exe/Spaller/refs/heads/main/app/icon.ico" alt="Spaller Logo" width="64" height="64" align="left"> Spaller
+# <img src="https://raw.githubusercontent.com/ice-exe/Spaller/refs/heads/main/app/icon.ico" alt="Spaller Logo" width="32" height="32" align="left"> Spaller
 **Software Package Installer**
 
 <br clear="left"/>
