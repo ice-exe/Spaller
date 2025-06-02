@@ -81,7 +81,7 @@
     },
     "Riot Games": {
       "description": "Launcher for Valorant, League of Legends, and other Riot titles",
-      "url": "https://riot-client.services.riotcdn.net/releases/live/installer/deploy/installer/RiotClientInstaller.exe",
+      "url": "https://valorant.secure.dyn.riotcdn.net/channels/public/x/installer/current/live.live.ap.exe",
       "installer": "riot_installer.exe",
       "size": 150,
       "icon": "🧨"
@@ -95,7 +95,7 @@
     },
     "Xbox App": {
       "description": "Microsoft's gaming app for PC Game Pass",
-      "url": "https://www.microsoft.com/store/productId/9MV0B5HZVK9Z",
+      "url": "https://aka.ms/xboxinstaller",
       "installer": "xbox_app.exe",
       "size": 140,
       "icon": "🎮"
@@ -104,21 +104,21 @@
   "Productivity": {
     "LibreOffice": {
       "description": "Free and open-source office suite",
-      "url": "https://www.libreoffice.org/download/download-libreoffice/",
+      "url": "https://www.libreoffice.org/donate/dl/win-x86_64/25.2.3/en-US/LibreOffice_25.2.3_Win_x86-64.msi",
       "installer": "libreoffice_installer.msi",
       "size": 300,
       "icon": "📄"
     },
     "Microsoft Office": {
       "description": "Premium office suite from Microsoft",
-      "url": "https://www.microsoft.com/en-us/microsoft-365/try",
+      "url": "https://c2rsetup.officeapps.live.com/c2r/download.aspx?ProductreleaseID=O365HomePremRetail&platform=x64&language=en-us&version=O16GA",
       "installer": "office_installer.exe",
       "size": 400,
       "icon": "📊"
     },
     "Notion": {
       "description": "All-in-one workspace for notes and collaboration",
-      "url": "https://www.notion.so/desktop/windows/download",
+      "url": "https://desktop-release.notion-static.com/Notion Setup 4.12.1.exe",
       "installer": "notion_installer.exe",
       "size": 180,
       "icon": "📝"
@@ -234,14 +234,14 @@
     },
     "Audacity": {
       "description": "Free audio editing software",
-      "url": "https://www.audacityteam.org/download/windows/",
+      "url": "https://github.com/audacity/audacity/releases/download/Audacity-3.7.3/audacity-win-3.7.3-64bit.exe",
       "installer": "audacity_installer.exe",
       "size": 35,
       "icon": "🎵"
     },
     "GIMP": {
       "description": "Free image editing software",
-      "url": "https://www.gimp.org/downloads/",
+      "url": "https://download.gimp.org/gimp/v3.0/windows/gimp-3.0.4-setup.exe",
       "installer": "gimp_installer.exe",
       "size": 280,
       "icon": "🎨"
@@ -255,14 +255,14 @@
     },
     "iTunes": {
       "description": "Apple's media player and library",
-      "url": "https://www.apple.com/itunes/download/",
+      "url": "https://apple.co/ms",
       "installer": "itunes_installer.exe",
       "size": 270,
       "icon": "🍎"
     },
     "Krita": {
       "description": "Free digital painting software",
-      "url": "https://download.kde.org/stable/krita/5.1.5/krita-x64-5.1.5-setup.exe",
+      "url": "https://download.kde.org/stable/krita/5.2.9/krita-x64-5.2.9-setup.exe,
       "installer": "krita_installer.exe",
       "size": 180,
       "icon": "🖌️"
@@ -303,13 +303,6 @@
       "installer": "slack_installer.exe",
       "size": 110,
       "icon": "💼"
-    },
-    "Skype": {
-      "description": "Video calling and messaging service",
-      "url": "https://www.skype.com/en/get-skype/",
-      "installer": "skype_installer.exe",
-      "size": 90,
-      "icon": "📞"
     },
     "Telegram": {
       "description": "Fast and secure messaging app",
@@ -364,7 +357,7 @@
     },
     "TreeSize": {
       "description": "Disk space analyzer and cleaner",
-      "url": "https://www.jam-software.de/treesize_free/",
+      "url": "https://downloads.jam-software.de/treesize_free/TreeSizeFreeSetup.exe",
       "installer": "treesize_installer.exe",
       "size": 8,
       "icon": "🌳"
@@ -438,7 +431,7 @@
   "File Management": {
     "FileZilla": {
       "description": "Free FTP client for file transfers",
-      "url": "https://filezilla-project.org/download.php?type=client",
+      "url": "https://download.filezilla-project.org/client/FileZilla_3.69.1_win64_sponsored2-setup.exe",
       "installer": "filezilla_installer.exe",
       "size": 12,
       "icon": "📁"
@@ -452,7 +445,7 @@
     },
     "SumatraPDF": {
       "description": "Lightweight PDF and ebook reader",
-      "url": "https://www.sumatrapdfreader.org/download-free-pdf-viewer",
+      "url": "https://www.sumatrapdfreader.org/dl/rel/3.5.2/SumatraPDF-3.5.2-64-install.exe",
       "installer": "sumatrapdf_installer.exe",
       "size": 6,
       "icon": "📘"
@@ -480,7 +473,7 @@
     },
     "OneDrive": {
       "description": "Microsoft's cloud storage service",
-      "url": "https://www.microsoft.com/en-us/microsoft-365/onedrive/download",
+      "url": "https://oneclient.sfx.ms/Win/Installers/25.075.0420.0002/amd64/OneDriveSetup.exe",
       "installer": "onedrive_installer.exe",
       "size": 100,
       "icon": "☁️"
@@ -517,7 +510,7 @@
     },
     "MSI Afterburner": {
       "description": "Graphics card overclocking utility",
-      "url": "https://www.msi.com/Landing/afterburner/graphics-cards",
+      "url": "https://download-2.msi.com/uti_exe/vga/MSIAfterburnerSetup.zip?__token__=exp=1748993553~acl=/*~hmac=dd7831b3b55de586d78d8745df437d32497fbd8c9e661031e118f8b305d4fb1d",
       "installer": "msiafterburner_installer.exe",
       "size": 40,
       "icon": "🚀"
