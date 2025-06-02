@@ -12,14 +12,14 @@
     },
     "Microsoft Edge": {
       "description": "Microsoft's modern web browser",
-      "url": "https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/latest/MicrosoftEdgeEnterpriseX64.msi",
-      "installer": "edge_installer.msi"
+      "url": "https://www.microsoft.com/en-us/edge/download",
+      "installer": "edge_installer.exe"
     }
   },
   "Messaging": {
     "Discord": {
       "description": "Voice, video and text communication platform",
-      "url": "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86",
+      "url": "https://discord.com/api/download?platform=win",
       "installer": "discord_installer.exe"
     },
     "Telegram": {
@@ -29,14 +29,24 @@
     },
     "WhatsApp": {
       "description": "Cross-platform messaging app",
-      "url": "https://web.whatsapp.com/desktop/windows/release/x64/WhatsAppSetup.exe",
+      "url": "https://www.whatsapp.com/download",
       "installer": "whatsapp_installer.exe"
+    },
+    "Zoom": {
+      "description": "Video conferencing and collaboration platform",
+      "url": "https://zoom.us/client/latest/ZoomInstaller.exe",
+      "installer": "zoom_installer.exe"
+    },
+    "Skype": {
+      "description": "Video and voice calls, messaging, and sharing",
+      "url": "https://go.skype.com/windows.desktop.download",
+      "installer": "skype_installer.exe"
     }
   },
   "Media": {
     "VLC Media Player": {
       "description": "Free multimedia player and framework",
-      "url": "https://get.videolan.org/vlc/last/win64/vlc-3.0.18-win64.exe",
+      "url": "https://get.videolan.org/vlc/last/win64/vlc-3.0.21-win64.exe",
       "installer": "vlc_installer.exe"
     },
     "Spotify": {
@@ -48,6 +58,16 @@
       "description": "Free streaming and recording software",
       "url": "https://cdn-fastly.obsproject.com/downloads/OBS-Studio-29.1.3-Full-Installer-x64.exe",
       "installer": "obs_installer.exe"
+    },
+    "Kodi": {
+      "description": "Open-source home theater software",
+      "url": "https://mirrors.kodi.tv/releases/windows/win64/kodi-20.2-Nexus-x64.exe",
+      "installer": "kodi_installer.exe"
+    },
+    "Audacity": {
+      "description": "Free, open-source audio editor and recorder",
+      "url": "https://www.fosshub.com/Audacity.html/audacity-win-3.3.3.exe",
+      "installer": "audacity_installer.exe"
     }
   },
   "Utilities": {
@@ -65,6 +85,16 @@
       "description": "System optimization and privacy tool",
       "url": "https://download.ccleaner.com/ccsetup602.exe",
       "installer": "ccleaner_installer.exe"
+    },
+    "Revo Uninstaller": {
+      "description": "Advanced uninstaller for removing programs",
+      "url": "https://www.revouninstaller.com/download-free-portable/",
+      "installer": "revo_installer.exe"
+    },
+    "Everything": {
+      "description": "Ultra-fast file search tool",
+      "url": "https://www.voidtools.com/Everything-1.4.1.1009.x64-Setup.exe",
+      "installer": "everything_installer.exe"
     }
   },
   "Development": {
@@ -82,6 +112,16 @@
       "description": "High-level programming language",
       "url": "https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe",
       "installer": "python_installer.exe"
+    },
+    "Node.js": {
+      "description": "JavaScript runtime built on Chrome's V8 engine",
+      "url": "https://nodejs.org/dist/v20.5.1/node-v20.5.1-x64.msi",
+      "installer": "nodejs_installer.msi"
+    },
+    "Docker Desktop": {
+      "description": "Containerization platform for developers",
+      "url": "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe",
+      "installer": "docker_installer.exe"
     }
   },
   "Gaming": {
@@ -99,6 +139,70 @@
       "description": "Blizzard's gaming platform",
       "url": "https://www.battle.net/download/getInstallerForGame?os=win&gameProgram=BATTLENET_APP&version=Live",
       "installer": "battlenet_installer.exe"
+    },
+    "GOG Galaxy": {
+      "description": "DRM-free game platform by GOG",
+      "url": "https://webinstallers.gog-statics.com/download/GOG_Galaxy_2.0.exe",
+      "installer": "gog_installer.exe"
+    },
+    "Ubisoft Connect": {
+      "description": "Ubisoft's game launcher and store",
+      "url": "https://ubistatic3-a.akamaihd.net/orbit/launcher_installer/UbisoftConnectInstaller.exe",
+      "installer": "ubisoft_installer.exe"
+    }
+  },
+  "Productivity": {
+    "LibreOffice": {
+      "description": "Free and open-source office suite",
+      "url": "https://download.documentfoundation.org/libreoffice/stable/7.6.0/win/x86_64/LibreOffice_7.6.0_Win_x64.msi",
+      "installer": "libreoffice_installer.msi"
+    },
+    "Foxit PDF Reader": {
+      "description": "Lightweight PDF reader and editor",
+      "url": "https://cdn01.foxitsoftware.com/product/reader/desktop/win/12.1.0/FoxitPDFReader1210_L10N_Setup_Prom.exe",
+      "installer": "foxit_installer.exe"
+    },
+    "Notepad++": {
+      "description": "Advanced text editor for coding",
+      "url": "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.4/npp.8.5.4.Installer.x64.exe",
+      "installer": "notepadpp_installer.exe"
+    },
+    "SumatraPDF": {
+      "description": "Lightweight PDF, eBook, and comic reader",
+      "url": "https://www.sumatrapdfreader.org/dl/SumatraPDF-3.5.0-64-install.exe",
+      "installer": "sumatrapdf_installer.exe"
+    },
+    "Microsoft PowerToys": {
+      "description": "Utilities to enhance Windows productivity",
+      "url": "https://github.com/microsoft/PowerToys/releases/download/v0.73.0/PowerToysSetup-0.73.0-x64.exe",
+      "installer": "powertoys_installer.exe"
+    }
+  },
+  "Security": {
+    "Bitdefender Antivirus Free": {
+      "description": "Free antivirus solution with real-time protection",
+      "url": "https://download.bitdefender.com/windows/installer/en-us/bitdefender_online.exe",
+      "installer": "bitdefender_installer.exe"
+    },
+    "Malwarebytes": {
+      "description": "Malware and spyware removal tool",
+      "url": "https://downloads.malwarebytes.com/file/mb-windows",
+      "installer": "malwarebytes_installer.exe"
+    },
+    "ProtonVPN": {
+      "description": "Secure and free VPN service",
+      "url": "https://protonvpn.com/download/ProtonVPN_win_v3.0.1.exe",
+      "installer": "protonvpn_installer.exe"
+    },
+    "KeePass": {
+      "description": "Open-source password manager",
+      "url": "https://downloads.sourceforge.net/project/keepass/KeePass%202.x/2.55/KeePass-2.55-Setup.exe",
+      "installer": "keepass_installer.exe"
+    },
+    "GlassWire": {
+      "description": "Network monitoring and security tool",
+      "url": "https://download.glasswire.com/GlassWireSetup.exe",
+      "installer": "glasswire_installer.exe"
     }
   }
 }
