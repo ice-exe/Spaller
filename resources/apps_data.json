@@ -1,0 +1,104 @@
+{
+  "Browsers": {
+    "Google Chrome": {
+      "description": "Fast, secure web browser by Google",
+      "url": "https://dl.google.com/chrome/install/latest/chrome_installer.exe",
+      "installer": "chrome_installer.exe"
+    },
+    "Mozilla Firefox": {
+      "description": "Open-source web browser with privacy focus",
+      "url": "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US",
+      "installer": "firefox_installer.exe"
+    },
+    "Microsoft Edge": {
+      "description": "Microsoft's modern web browser",
+      "url": "https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/latest/MicrosoftEdgeEnterpriseX64.msi",
+      "installer": "edge_installer.msi"
+    }
+  },
+  "Messaging": {
+    "Discord": {
+      "description": "Voice, video and text communication platform",
+      "url": "https://discord.com/api/downloads/distributions/app/installers/latest?channel=stable&platform=win&arch=x86",
+      "installer": "discord_installer.exe"
+    },
+    "Telegram": {
+      "description": "Fast, secure messaging app",
+      "url": "https://telegram.org/dl/desktop/win64",
+      "installer": "telegram_installer.exe"
+    },
+    "WhatsApp": {
+      "description": "Cross-platform messaging app",
+      "url": "https://web.whatsapp.com/desktop/windows/release/x64/WhatsAppSetup.exe",
+      "installer": "whatsapp_installer.exe"
+    }
+  },
+  "Media": {
+    "VLC Media Player": {
+      "description": "Free multimedia player and framework",
+      "url": "https://get.videolan.org/vlc/last/win64/vlc-3.0.18-win64.exe",
+      "installer": "vlc_installer.exe"
+    },
+    "Spotify": {
+      "description": "Digital music streaming service",
+      "url": "https://download.scdn.co/SpotifySetup.exe",
+      "installer": "spotify_installer.exe"
+    },
+    "OBS Studio": {
+      "description": "Free streaming and recording software",
+      "url": "https://cdn-fastly.obsproject.com/downloads/OBS-Studio-29.1.3-Full-Installer-x64.exe",
+      "installer": "obs_installer.exe"
+    }
+  },
+  "Utilities": {
+    "7-Zip": {
+      "description": "File archiver with high compression ratio",
+      "url": "https://www.7-zip.org/a/7z2201-x64.exe",
+      "installer": "7zip_installer.exe"
+    },
+    "WinRAR": {
+      "description": "Powerful archive manager",
+      "url": "https://www.rarlab.com/rar/winrar-x64-611.exe",
+      "installer": "winrar_installer.exe"
+    },
+    "CCleaner": {
+      "description": "System optimization and privacy tool",
+      "url": "https://download.ccleaner.com/ccsetup602.exe",
+      "installer": "ccleaner_installer.exe"
+    }
+  },
+  "Development": {
+    "Visual Studio Code": {
+      "description": "Lightweight code editor by Microsoft",
+      "url": "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user",
+      "installer": "vscode_installer.exe"
+    },
+    "Git": {
+      "description": "Distributed version control system",
+      "url": "https://github.com/git-for-windows/git/releases/download/v2.42.0.windows.2/Git-2.42.0.2-64-bit.exe",
+      "installer": "git_installer.exe"
+    },
+    "Python": {
+      "description": "High-level programming language",
+      "url": "https://www.python.org/ftp/python/3.11.5/python-3.11.5-amd64.exe",
+      "installer": "python_installer.exe"
+    }
+  },
+  "Gaming": {
+    "Steam": {
+      "description": "Digital distribution platform for games",
+      "url": "https://cdn.akamai.steamstatic.com/client/installer/SteamSetup.exe",
+      "installer": "steam_installer.exe"
+    },
+    "Epic Games Launcher": {
+      "description": "Digital storefront for Epic Games",
+      "url": "https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi",
+      "installer": "epic_installer.msi"
+    },
+    "Battle.net": {
+      "description": "Blizzard's gaming platform",
+      "url": "https://www.battle.net/download/getInstallerForGame?os=win&gameProgram=BATTLENET_APP&version=Live",
+      "installer": "battlenet_installer.exe"
+    }
+  }
+}
